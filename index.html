@@ -209,31 +209,46 @@
   .chip b{color:var(--gold);font-family:var(--display);font-weight:800}
   .cover .author{margin-top:34px}
   @media (max-width:900px){.cover{min-height:96svh;padding-bottom:56px}}
+
+  .topbar{position:sticky;top:0;z-index:50;padding:13px 0}
+  .topbar::before{content:"";position:absolute;inset:0 -100vw;background:rgba(11,13,18,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(38,43,56,.7);z-index:-1}
+  .tnav{display:flex;gap:26px}
+  .topbar .tnav a{border:0;padding:0;border-radius:0;font-family:var(--display);font-size:14.5px;letter-spacing:0;color:var(--ink-dim)}
+  .topbar .tnav a:hover,.topbar .tnav a:focus-visible{color:var(--gold)}
+  .topbar .tcta{border:0;background:var(--gold);color:#181203;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:0;padding:9px 18px;border-radius:6px}
+  .topbar .tcta:hover{box-shadow:0 4px 22px rgba(240,178,67,.4);color:#181203}
+  @media (max-width:760px){.tnav{display:none}}
+  /* строка цифр вместо плашек */
+  .statline{display:flex;flex-wrap:wrap;margin:30px 0 34px;border-top:1px solid rgba(242,239,230,.16);border-bottom:1px solid rgba(242,239,230,.16)}
+  .statline > div{padding:16px 28px 15px 0;margin-right:28px;border-right:1px solid rgba(242,239,230,.12)}
+  .statline > div:last-child{border-right:0;margin-right:0}
+  .statline b{display:block;font-size:clamp(21px,2.4vw,27px);font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .statline b em{font-style:normal;color:var(--gold)}
+  .statline span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,239,230,.55)}
+  @media (max-width:760px){.statline > div{padding:12px 18px 11px 0;margin-right:18px}}
+  /* статичная обложка */
+  .cover .bgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 26%;filter:brightness(.46) saturate(1.05)}
 </style>
 
 <div class="wrap">
   <header class="topbar">
-    <span class="rec"><i></i>RUSLAN.AI.BLOG&nbsp;· В&nbsp;ЭФИРЕ</span>
-    <a href="https://t.me/ruslan_ai_creator">НАПИСАТЬ В TELEGRAM</a>
+    <span class="rec"><i></i>RUSLAN.AI.BLOG</span>
+    <nav class="tnav"><a href="#cases">Работы</a><a href="#services">Услуги</a><a href="#learn">Обучение</a></nav>
+    <a class="tcta" href="https://t.me/ruslan_ai_creator">Заказать ролик</a>
   </header>
 
   <section class="cover">
-  <div class="bgs">
-    <video src="teaser_pokupka.mp4" muted loop playsinline autoplay preload="auto"></video>
-    <video src="teaser_deti.mp4" muted loop playsinline preload="auto"></video>
-    <video src="teaser_put.mp4" muted loop playsinline preload="auto"></video>
-    <video src="teaser_nasl.mp4" muted loop playsinline preload="auto"></video>
-  </div>
+  <div class="bgs"><img src="cover.jpg" alt=""></div>
   <div class="cover-in">
     <div class="eyebrow">Нейро-сериалы × AI-Reels для брендов</div>
     <h1>Сериалы без съёмок.<br>Просмотры — <span class="g">настоящие</span>.</h1>
     <p class="lede" style="max-width:52ch;margin-top:22px">Пишу, генерирую и монтирую нейро-сериалы, которые собирают миллионы
     просмотров, — и встраиваю в них бренды. Без камеры, актёров и продакшена.</p>
-    <div class="chips">
-      <span class="chip"><b>3,4 млн</b>&nbsp;· рекорд одного ролика</span>
-      <span class="chip"><b>17,8 млн</b>&nbsp;· суммарных просмотров</span>
-      <span class="chip"><b>54 000+</b>&nbsp;· подписчиков</span>
-      <span class="chip">ролик за <b>3–5 дней</b></span>
+    <div class="statline">
+      <div><b><em>3,4 млн</em></b><span>рекорд одного ролика</span></div>
+      <div><b>17,8 млн</b><span>суммарных просмотров</span></div>
+      <div><b>54 000+</b><span>подписчиков</span></div>
+      <div><b>3–5 дней</b><span>ролик под ключ</span></div>
     </div>
     <div class="cta-row" style="margin-top:0">
       <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator">Заказать ролик</a>
@@ -280,7 +295,7 @@
     <p class="shelf-note">// все сюжеты, персонажи и кадры сгенерированы нейросетями. просмотры — живые.</p>
   </section>
 
-  <section>
+  <section id="services">
     <div class="sec-head">
       <h2>Что я делаю для брендов</h2>
       <span class="tag">форматы</span>
@@ -412,22 +427,5 @@
     }
   }, { threshold: .6 });
   document.querySelectorAll('[data-count]').forEach(el => io.observe(el));
-</script>
-<script>
-  (() => {
-    const vids = [...document.querySelectorAll('.cover .bgs video')];
-    if (!vids.length) return;
-    vids[0].classList.add('on');
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches || vids.length < 2) return;
-    let ci = 0;
-    setInterval(() => {
-      vids[ci].classList.remove('on');
-      ci = (ci + 1) % vids.length;
-      const v = vids[ci];
-      v.currentTime = 0;
-      v.play().catch(() => {});
-      v.classList.add('on');
-    }, 6000);
-  })();
 </script>
 
