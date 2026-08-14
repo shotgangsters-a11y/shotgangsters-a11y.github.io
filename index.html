@@ -276,7 +276,9 @@
   .plan .btn{margin-top:auto;justify-content:center}
   @media (max-width:900px){.plans{grid-template-columns:1fr}}
   /* мини-прайс для людей */
-  .mini-price{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+  .mini-price{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:14px;margin-top:26px}
+  .mini-price a{text-decoration:none}
+  .mp.hotmp{border-color:var(--gold);box-shadow:0 6px 30px rgba(240,178,67,.10)}
   .mp{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:18px 18px 16px}
   .mp b{display:block;font-size:22px;font-weight:800;color:var(--gold);margin-bottom:2px}
   .mp span{font-size:14px;color:var(--ink)}
@@ -498,6 +500,7 @@
       </div>
     </div>
     <div class="mini-price">
+      <a class="mp hotmp" href="https://t.me/ruslan_ai_creator"><b>1 490 ₽</b><span>Гайд для новичков</span><i>первое фото, ролик и анимация</i></a>
       <div class="mp"><b>1 000 ₽</b><span>Оживление фото</span><i>старый снимок оживает</i></div>
       <div class="mp"><b>2 000 ₽</b><span>Песня на заказ</span><i>ваш текст или история</i></div>
       <div class="mp"><b>2 500 ₽</b><span>AI-фотосессия</span><i>пакет портретов</i></div>
@@ -518,6 +521,7 @@
           <li><b style="color:var(--ink)">25 000 ₽</b> за полный путь до твоего опубликованного ролика</li>
         </ul>
         <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator">Написать <span style="margin-left:2px">«ОБУЧЕНИЕ»</span></a>
+        <p style="margin:18px 0 0;font-size:14.5px;color:var(--ink-faint)">Пока не готов к личному формату — начни с <b style="color:var(--gold)">гайда за 1 490 ₽</b>: первое фото, первый ролик и анимация по шагам. Напиши «ГАЙД».</p>
       </div>
     </div>
   </section>
@@ -526,7 +530,7 @@
   <section id="faq">
     <div class="sec-head"><h2>Вопросы и ответы</h2><span class="tag">коротко и честно</span></div>
     <div class="faq">
-      <details><summary>Сколько стоит ролик?</summary><p>Интеграция в сериал — <b>15 000 ₽</b>, ролик под ключ — <b>25 000 ₽</b>, свой сериал — <b>от 80 000 ₽/мес</b>. Оживление фото 1 000 ₽, песня 2 000 ₽, AI-фотосессия 2 500 ₽, личное обучение 25 000 ₽. Цена фиксируется до старта — без доплат по ходу.</p></details>
+      <details><summary>Сколько стоит ролик?</summary><p>Интеграция в сериал — <b>15 000 ₽</b>, ролик под ключ — <b>25 000 ₽</b>, свой сериал — <b>от 80 000 ₽/мес</b>. Оживление фото 1 000 ₽, песня 2 000 ₽, AI-фотосессия 2 500 ₽, гайд для новичков 1 490 ₽, личное обучение 25 000 ₽. Цена фиксируется до старта — без доплат по ходу.</p></details>
       <details><summary>Как быстро будет готово?</summary><p><b>3–5 дней</b> от брифа до готового вертикального ролика 9:16. Серия эпизодов — по графику, который согласуем заранее.</p></details>
       <details><summary>Что нужно от меня?</summary><p>Продукт (фото или описание), пара тезисов — что важно донести, и куда вести зрителя. Сценарий, персонажей, озвучку и монтаж делаю я.</p></details>
       <details><summary>Кому принадлежит ролик?</summary><p>Ролик, сделанный под ключ, — <b>ваш</b>: публикуйте на своих площадках без ограничений. Интеграция в мой сериал выходит у меня — и работает на мою аудиторию в 54 000+ подписчиков.</p></details>
