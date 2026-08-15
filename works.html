@@ -299,6 +299,12 @@
   .page-head h1{font-size:clamp(36px,5vw,58px);font-weight:800;text-transform:uppercase;letter-spacing:-.01em}
   .page-head .eyebrow{margin-bottom:14px}
   .topbar .tnav a.on{color:var(--gold)}
+
+  .phero{position:relative;left:50%;transform:translateX(-50%);width:100vw;margin-top:-72px;padding:150px max(24px,calc((100vw - 1120px)/2)) 56px;overflow:hidden}
+  .phero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.38) saturate(1.1);z-index:-2}
+  .phero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,18,.55),rgba(11,13,18,.18) 45%,var(--ground) 97%);z-index:-1}
+  .phero h1{font-size:clamp(36px,5vw,58px);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+  .phero .eyebrow{margin-bottom:14px}
 </style>
 <div class="wrap">
   <header class="topbar">
@@ -306,7 +312,7 @@
     <nav class="tnav"><a href="works.html" class="on">Работы</a><a href="price.html">Услуги и цены</a><a href="about.html">Обо мне</a><a href="learn.html">Обучение</a></nav>
     <a class="tcta" href="https://t.me/ruslan_ai_creator">Заказать ролик</a>
   </header>
-<section class="page-head"><div class="eyebrow">нейро-сериалы, которые смотрят миллионы</div><h1>Работы</h1></section>
+<section class="phero"><img class="bg" src="hero_works.jpg" alt=""><div class="eyebrow">нейро-сериалы, которые смотрят миллионы</div><h1>Работы</h1></section>
 <section id="cases">
     <div class="sec-head">
       <h2>Сейчас смотрят</h2>
