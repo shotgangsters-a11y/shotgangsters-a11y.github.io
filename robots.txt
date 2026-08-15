@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /v1.html
+Disallow: /v2.html
+Disallow: /v3.html
+Disallow: /v4.html
+Sitemap: https://ruslan-ai-blog.ru/sitemap.xml
