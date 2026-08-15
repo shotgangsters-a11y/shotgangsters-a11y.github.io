@@ -321,8 +321,8 @@
   @media (max-width:900px){.waypoints{grid-template-columns:1fr}}
 
   .phero{position:relative;left:50%;transform:translateX(-50%);width:100vw;margin-top:-72px;padding:150px max(24px,calc((100vw - 1120px)/2)) 56px;overflow:hidden}
-  .phero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.52) saturate(1.08);z-index:-2}
-  .phero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,18,.55),rgba(11,13,18,.18) 45%,var(--ground) 97%);z-index:-1}
+  .phero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.94) saturate(1.05);z-index:-2}
+  .phero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,18,.3),rgba(11,13,18,.05) 45%,var(--ground) 98%);z-index:-1}
   .phero h1{font-size:clamp(36px,5vw,58px);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;text-shadow:0 4px 30px rgba(0,0,0,.5)}
   .phero .eyebrow{margin-bottom:14px}
 
@@ -344,6 +344,13 @@
   .sic:hover svg,.sic:focus-visible svg{fill:var(--gold)}
   .sic.soon{opacity:.38}
   .foot{align-items:center}
+
+  #story{position:relative}
+  #story::before{content:"";position:absolute;left:-34vw;top:8%;width:44vw;height:84%;background:radial-gradient(ellipse,rgba(240,178,67,.10),transparent 70%);pointer-events:none}
+  #story::after{content:"";position:absolute;right:-30vw;bottom:-6%;width:42vw;height:70%;background:radial-gradient(ellipse,rgba(240,178,67,.07),transparent 70%);pointer-events:none}
+  .bignum{position:absolute;right:-12px;top:44px;font-size:clamp(90px,13vw,180px);font-weight:800;color:rgba(240,178,67,.07);line-height:.9;text-align:right;pointer-events:none;user-select:none}
+  .bignum small{display:block;font-size:.35em}
+  @media (max-width:1000px){.bignum{display:none}}
 </style>
 <div class="wrap">
   <header class="topbar">
@@ -353,7 +360,7 @@
   </header>
 <section class="phero"><img class="bg" src="hero_about.jpg" alt=""><div class="eyebrow">кто делает ваши ролики</div><h1>Обо мне</h1></section>
 
-  <section id="story">
+  <section id="story"><div class="bignum">17,8<small>млн просмотров</small></div>
     <div class="story">
       <p class="lead">Я самоучка. Ни курсов, ни наставников — только я, нейросети и год очень упрямой практики.</p>
       <p>Начал в <b>сентябре 2025-го</b>, когда всё это было заметно сложнее, чем сейчас: инструменты сырые, липсинк разваливался, персонажи меняли лицо от кадра к кадру. Разбирался методом проб — сотни неудачных генераций, ночи на монтаже и корзина, полная выброшенных черновиков.</p>
