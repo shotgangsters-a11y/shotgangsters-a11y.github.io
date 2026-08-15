@@ -211,7 +211,7 @@
 
   /* полноэкранная обложка-шоурил */
   .topbar{position:relative;z-index:6}
-  .cover{position:relative;left:50%;transform:translateX(-50%);width:100vw;min-height:92svh;display:flex;align-items:flex-end;margin-top:-72px;padding:120px max(24px,calc((100vw - 1120px)/2)) 72px}
+  .cover{position:relative;left:50%;transform:translateX(-50%);width:100vw;min-height:92vh;min-height:92svh;display:flex;align-items:flex-end;margin-top:-72px;padding:120px max(24px,calc((100vw - 1120px)/2)) 72px}
   .cover .bgs{position:absolute;inset:0;overflow:hidden}
   .cover .bgs video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease;filter:brightness(.42) saturate(1.15)}
   .cover .bgs video.on{opacity:1}
@@ -224,7 +224,7 @@
   .chip{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;padding:9px 15px;border:1px solid rgba(242,239,230,.28);border-radius:999px;background:rgba(5,6,9,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--ink)}
   .chip b{color:var(--gold);font-family:var(--display);font-weight:800}
   .cover .author{margin-top:34px}
-  @media (max-width:900px){.cover{min-height:96svh;padding-bottom:56px}}
+  @media (max-width:900px){.cover{min-height:96vh;min-height:96svh;padding-bottom:56px}}
 
   .topbar{position:sticky;top:0;z-index:50;padding:7px 0}
   .topbar::before{content:"";position:absolute;inset:0 -100vw -28px;background:rgba(11,13,18,.72);-webkit-backdrop-filter:blur(14px) brightness(.92);backdrop-filter:blur(14px) brightness(.92);z-index:-1;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 62%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 62%,transparent 100%)}
@@ -343,12 +343,29 @@
     .shelf:hover .poster:hover{opacity:1;filter:none}
   }
   .poster{transition:transform .25s,box-shadow .25s,opacity .35s,filter .35s}
+
+  /* мобильное меню */
+  .tright{display:flex;align-items:center;gap:10px}
+  .burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:40px;height:36px;color:var(--ink);font-size:17px;cursor:pointer;padding:0;line-height:1}
+  @media (max-width:760px){.burger{display:inline-flex;align-items:center;justify-content:center}}
+  .mnav{display:none;position:fixed;inset:0;background:rgba(11,13,18,.98);z-index:200;flex-direction:column;justify-content:center;padding:28px}
+  .mnav.open{display:flex}
+  .mnav a{font-size:26px;font-weight:800;text-transform:uppercase;text-decoration:none;color:var(--ink);padding:16px 8px;border-bottom:1px solid var(--line);letter-spacing:-.01em}
+  .mnav a:active,.mnav a.on{color:var(--gold)}
+  .mnav .mclose{position:absolute;top:16px;right:20px;font-size:30px;background:none;border:0;color:var(--ink);cursor:pointer;padding:8px}
+  .mnav .mtg{margin-top:26px;background:var(--gold);color:#181203;text-align:center;border-radius:10px;border-bottom:0;font-size:18px;padding:16px}
 </style>
+<nav class="mnav" id="mnav" aria-label="Меню">
+  <button class="mclose" aria-label="Закрыть">✕</button>
+  <a href="index.html">Главная</a>
+  <a href="works.html">Работы</a><a href="price.html">Услуги и цены</a><a href="about.html">Обо мне</a><a href="learn.html">Обучение</a>
+  <a class="mtg" href="https://t.me/ruslan_ai_creator">Написать в Telegram</a>
+</nav>
 <div class="wrap">
   <header class="topbar">
     <a href="index.html" style="text-decoration:none"><span class="rec"><i></i>RUSLAN.AI.BLOG</span></a>
     <nav class="tnav"><a href="works.html">Работы</a><a href="price.html">Услуги и цены</a><a href="about.html">Обо мне</a><a href="learn.html">Обучение</a></nav>
-    <a class="tcta" href="https://t.me/ruslan_ai_creator">Заказать ролик</a>
+    <span class="tright"><a class="tcta" href="https://t.me/ruslan_ai_creator">Заказать ролик</a><button class="burger" id="mburger" aria-label="Меню">☰</button></span>
   </header>
 
 <section class="cover">
@@ -431,5 +448,17 @@
   <div class="wrap requisites">ИП Абдрахманов Руслан Леонидович · ИНН 382009236109 · ОГРНИП 322385000099295</div>
 </footer>
 
+
+
+<script>
+  (() => {
+    const m = document.getElementById('mnav');
+    const b = document.getElementById('mburger');
+    if (!m || !b) return;
+    b.onclick = () => m.classList.add('open');
+    m.querySelector('.mclose').onclick = () => m.classList.remove('open');
+    m.querySelectorAll('a').forEach(a => a.addEventListener('click', () => m.classList.remove('open')));
+  })();
+</script>
 
 </html>
