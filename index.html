@@ -367,6 +367,20 @@
   @keyframes floaty{from{transform:translateY(-9px)}to{transform:translateY(11px)}}
   @media (max-width:900px){.fchip{font-size:11px;padding:8px 13px;right:4%!important;top:16%!important}.fchip.f2{display:none}}
   @media (prefers-reduced-motion:reduce){.fchip{animation:none}}
+
+  /* оффер запуска */
+  .offer{position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,rgba(201,138,70,.16),rgba(158,73,61,.08) 60%),var(--surface);border:1px solid var(--gold);box-shadow:0 16px 70px rgba(201,138,70,.14);padding:30px 32px;margin-top:56px}
+  .offer .ob{position:absolute;top:18px;right:-34px;transform:rotate(38deg);background:var(--terra);color:#fff;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;padding:6px 40px;text-transform:uppercase}
+  .offer .ok2{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .offer h3{font-size:clamp(21px,2.6vw,28px);font-weight:800;text-transform:uppercase;margin:0 0 10px;letter-spacing:-.01em}
+  .offer .oprice{display:flex;align-items:baseline;gap:14px;margin:8px 0 14px}
+  .offer .oprice b{font-size:clamp(30px,3.6vw,42px);font-weight:800;color:var(--gold)}
+  .offer .oprice s{color:var(--ink-faint);font-size:18px}
+  .offer ul{list-style:none;margin:0 0 20px;display:flex;flex-direction:column;gap:8px}
+  .offer li{padding-left:24px;position:relative;color:var(--ink-dim)}
+  .offer li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+  .offer li b{color:var(--ink)}
+  .offer .oseats{font-family:var(--mono);font-size:12px;color:var(--terra);letter-spacing:.08em;margin-top:12px}
 </style>
 <nav class="mnav" id="mnav" aria-label="Меню">
   <button class="mclose" aria-label="Закрыть">✕</button>
