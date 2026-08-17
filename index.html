@@ -393,6 +393,46 @@
   @keyframes marq{to{transform:translateX(-50%)}}
   @media (prefers-reduced-motion:reduce){.marq-in{animation:none}}
   .marq + .final{margin-top:0;border-top:0}
+
+  /* ── герой: автор в кадре ── */
+  .cover .bgs{background:radial-gradient(75% 85% at 78% 38%,rgba(223,162,84,.13),transparent 62%),linear-gradient(180deg,#1b0f08 0%,var(--ground) 94%)}
+  .cover .me{position:absolute;inset:0 0 0 auto;width:min(52vw,880px);background:url(hero_about.jpg) 46% 16%/cover no-repeat;-webkit-mask-image:linear-gradient(to left,#000 62%,transparent 100%);mask-image:linear-gradient(to left,#000 62%,transparent 100%)}
+  /* ── иконки выгод ── */
+  .svc-ico{width:46px;height:46px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(223,162,84,.24),rgba(223,162,84,.06));border:1px solid var(--gold-deep);
+    box-shadow:0 6px 26px rgba(223,162,84,.14);margin-bottom:4px}
+  .svc-ico svg{width:23px;height:23px;fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ── финал: автор крупно рядом с призывом ── */
+  .final-split{text-align:left;padding:76px 0 88px}
+  .final-split .fs-in{display:grid;grid-template-columns:.92fr 1.08fr;gap:48px;align-items:center;position:relative;z-index:2}
+  .final-split .fs-photo img{width:100%;display:block;border-radius:22px;border:1px solid var(--line);box-shadow:0 20px 70px rgba(0,0,0,.5)}
+  .final-split h2{max-width:20ch;margin:0 0 14px}
+  .final-split p{margin:0 0 28px;max-width:46ch;color:var(--ink-dim)}
+  @media (max-width:900px){
+    .final-split .fs-in{grid-template-columns:1fr;gap:28px}
+    .final-split{padding:56px 0 64px}
+  }
+
+  .cover{min-height:min(92svh,960px)}
+  .cover .cover-in{max-width:none}
+  .cover h1{max-width:20ch;font-size:clamp(38px,4.6vw,62px)}
+  .cover .lede,.cover .cta-row,.cover-in > p{max-width:min(50ch,52%)}
+  .cover .statline{max-width:min(700px,60%);flex-wrap:nowrap}
+  .cover .statline > div{padding-right:20px;margin-right:20px}
+  .cover .statline b,.cover .statline span{white-space:nowrap}
+  .cover .me-plate{position:absolute;right:max(24px,calc((100vw - 1120px)/2));bottom:64px;z-index:2;text-align:left}
+  .cover .me-plate b{display:block;font-size:clamp(20px,2vw,26px);font-weight:800}
+  .cover .me-plate span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:rgba(242,239,230,.72)}
+  @media (max-width:900px){
+    .cover .me{width:100%;background-position:52% 0;-webkit-mask-image:linear-gradient(to bottom,#000 34%,transparent 82%);mask-image:linear-gradient(to bottom,#000 34%,transparent 82%)}
+    .cover .bgs::after{height:70%}
+    .cover .me-plate{display:none}
+    .cover h1{max-width:none;font-size:clamp(34px,8vw,46px)}
+    .cover .lede,.cover .cta-row,.cover-in > p{max-width:none}
+    .cover .statline{max-width:none;flex-wrap:wrap}
+    .cover .statline b,.cover .statline span{white-space:normal}
+  }
 </style>
 <nav class="mnav" id="mnav" aria-label="Меню">
   <button class="mclose" aria-label="Закрыть">✕</button>
@@ -408,9 +448,8 @@
   </header>
 
 <section class="cover">
-  <div class="bgs"><img src="cover.jpg" alt=""></div>
-  <span class="fchip" style="right:13%;top:24%">▶ <b>3 400 000</b> просмотров у этой серии</span>
-  <span class="fchip f2" style="right:6%;top:55%"><b>54 000+</b> подписчиков ждут продолжения</span>
+  <div class="bgs"><div class="me" role="img" aria-label="Руслан — автор нейро-сериалов"></div></div>
+  <div class="me-plate"><b>Руслан</b><span>автор нейро-сериалов · @ruslan.ai.blog</span></div>
   <div class="cover-in">
     <div class="eyebrow">Нейро-сериалы × AI-Reels для брендов</div>
     <h1>Сериалы без съёмок.<br>Просмотры — <span class="g">настоящие</span>.</h1>
@@ -428,10 +467,6 @@
     </div>
     <p style="margin-top:14px;font-size:13.5px;color:var(--ink-faint);max-width:52ch">Напишите — задам три вопроса и назову формат, цену и срок.
     Вопрос ни к чему не обязывает. Всё согласуем до старта — работаю по брифу, правки в его рамках включены.</p>
-    <div class="author" style="margin-top:34px">
-      <img src="ava.jpg" alt="Руслан">
-      <div><b>Руслан</b><span>автор нейро-сериалов · @ruslan.ai.blog</span></div>
-    </div>
   </div>
 </section>
 
@@ -439,21 +474,25 @@
     <div class="sec-head"><h2>Что это даст вам</h2><span class="tag">боли, которые я закрываю</span></div>
     <div class="services" style="grid-template-columns:repeat(2,1fr)">
       <div class="svc">
+        <span class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 17.5 9 11l4 3.5 8-8.5"/><path d="M15 6h6v6"/></svg></span>
         <span class="num">БЛОГЕРАМ И ЭКСПЕРТАМ</span>
         <h3>«Охваты упали, Reels не залетают»</h3>
         <p>Разработаю под вас нейро-сериал: сюжет, герои, серии. Зритель возвращается за продолжением — алгоритм это обожает. Так я сам вырос <b style="color:var(--ink)">с нуля до 54 000 подписчиков за год</b>, без рубля на рекламу.</p>
       </div>
       <div class="svc">
+        <span class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10.5 21 7.5v9l-5-3"/></svg></span>
         <span class="num">БРЕНДАМ И ТОВАРКЕ</span>
         <h3>«Реклама дорожает, съёмки — это месяц»</h3>
         <p>Ваш продукт становится частью истории, которую досматривают, а не проматывают. Без продакшена, актёров и согласований: <b style="color:var(--ink)">готовый ролик через 3–5 дней</b> от брифа.</p>
       </div>
       <div class="svc">
+        <span class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M16.5 7.5c0-1.9-2-3-4.5-3s-4.5 1.1-4.5 3 2 2.7 4.5 3.2 4.5 1.3 4.5 3.3-2 3-4.5 3-4.5-1.1-4.5-3"/></svg></span>
         <span class="num">МАЛОМУ БИЗНЕСУ</span>
         <h3>«На видеопродакшн нет бюджета»</h3>
         <p>Ролик под ключ <b style="color:var(--ink)">от 5 000 ₽</b> — с идеей, сценарием, озвучкой и монтажом. Контент, который выглядит как у больших, по цене одного обеда с клиентом.</p>
       </div>
       <div class="svc">
+        <span class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12.5" rx="2"/><path d="M3 12.5h18M12 8v12.5"/><path d="M12 8c-.6-2.4-2-3.5-3.6-3.5-1.3 0-2.4 1-2.4 2.2 0 .9.9 1.3 6 1.3zm0 0c.6-2.4 2-3.5 3.6-3.5 1.3 0 2.4 1 2.4 2.2 0 .9-.9 1.3-6 1.3z"/></svg></span>
         <span class="num">ЛЮДЯМ</span>
         <h3>«Хочу подарок, который запомнят»</h3>
         <p>История вашей любви мультфильмом к свадьбе, ролик на день рождения, ожившее семейное фото, песня про вашу историю — <b style="color:var(--ink)">от 1 000 ₽</b>. Мурашки гарантирую.</p>
@@ -499,13 +538,18 @@
   <div class="marq-seq"><span>Нейро-сериалы</span><i>◆</i><span>AI-Reels</span><i>◆</i><span>Интеграции брендов</span><i>◆</i><span>Оживление фото</span><i>◆</i><span>Песня на заказ</span><i>◆</i><span>AI-фотосессия</span><i>◆</i><span>Сайты</span><i>◆</i><span>Обучение</span><i>◆</i></div>
   <div class="marq-seq"><span>Нейро-сериалы</span><i>◆</i><span>AI-Reels</span><i>◆</i><span>Интеграции брендов</span><i>◆</i><span>Оживление фото</span><i>◆</i><span>Песня на заказ</span><i>◆</i><span>AI-фотосессия</span><i>◆</i><span>Сайты</span><i>◆</i><span>Обучение</span><i>◆</i></div>
 </div></div>
-<div class="final">
-  <img class="author-solo" src="ava.jpg" alt="Руслан">
-  <h2>Ваш бренд — в следующей <span style="color:var(--gold)">серии</span>?</h2>
-  <p>Пока конкуренты согласовывают смету на съёмки, ваш ролик уже набирает просмотры.</p>
-  <div class="cta-row" style="justify-content:center;margin-top:0">
-    <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator">Написать в Telegram</a>
-    <a class="btn btn-ghost" href="https://ig.me/m/ruslan.ai.blog">«БРЕНД» в Direct</a>
+<div class="final final-split">
+  <div class="wrap fs-in">
+    <div class="fs-photo"><img src="learn_photo.jpg" alt="Руслан за работой над роликом"></div>
+    <div class="fs-text">
+      <div class="eyebrow">следующая серия — ваша</div>
+      <h2>Ваш бренд — в следующей <span style="color:var(--gold)">серии</span>?</h2>
+      <p>Пока конкуренты согласовывают смету на съёмки, ваш ролик уже набирает просмотры. Напишите — задам три вопроса и назову формат, цену и срок.</p>
+      <div class="cta-row" style="margin-top:0">
+        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%BE%D0%BB%D0%B8%D0%BA.%20%D0%9C%D0%BE%D1%8F%20%D0%BD%D0%B8%D1%88%D0%B0%3A%20">Написать в Telegram</a>
+        <a class="btn btn-ghost" href="https://ig.me/m/ruslan.ai.blog">«БРЕНД» в Direct</a>
+      </div>
+    </div>
   </div>
 </div>
 
