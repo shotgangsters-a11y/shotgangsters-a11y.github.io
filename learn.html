@@ -363,6 +363,55 @@
   .mnav a:active,.mnav a.on{color:var(--gold)}
   .mnav .mclose{position:absolute;top:16px;right:20px;font-size:30px;background:none;border:0;color:var(--ink);cursor:pointer;padding:8px}
   .mnav .mtg{margin-top:26px;background:var(--gold);color:#181203;text-align:center;border-radius:10px;border-bottom:0;font-size:18px;padding:16px}
+
+  /* ── мои результаты: профиль + живые цифры ── */
+  .res{display:grid;grid-template-columns:.88fr 1.12fr;gap:18px;align-items:stretch}
+  .prof{display:flex;flex-direction:column;gap:24px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:30px 28px;transition:border-color .2s,transform .15s}
+  .prof:hover,.prof:focus-visible{border-color:var(--gold);transform:translateY(-3px)}
+  .prof .phead{display:flex;align-items:center;gap:18px}
+  .prof img{width:92px;height:92px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 30px rgba(201,138,70,.25);flex-shrink:0}
+  .prof .phead b{display:block;font-size:20px;font-weight:800}
+  .prof .phead span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--ink-faint)}
+  .prof .pnums{display:flex;gap:26px;border-top:1px solid var(--line);padding-top:18px}
+  .prof .pnums b{display:block;font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+  .prof .pnums span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+  .prof .pgo{margin-top:auto;display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-weight:700;font-size:15px}
+  .res-nums{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:22px 26px;align-content:center}
+  .res-chart{position:absolute;inset:auto 0 0 0;width:100%;height:72%;pointer-events:none}
+  .rn{position:relative}
+  .rn b{display:block;font-size:clamp(24px,2.8vw,32px);font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .rn b em{font-style:normal;color:var(--gold)}
+  .rn span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+  @media (max-width:900px){.res{grid-template-columns:1fr}.res-nums{grid-template-columns:1fr 1fr;padding:24px}}
+
+  /* ── чему научишься: цифры поверх портрета ── */
+  .path{display:grid;grid-template-columns:.8fr 1.2fr;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+  .path-photo{background:url(about_portrait.jpg) center 20%/cover no-repeat;min-height:420px;position:relative;filter:saturate(.9)}
+  .path-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,var(--surface) 100%),linear-gradient(to top,rgba(11,13,18,.35),transparent 40%)}
+  .path-in{padding:40px 40px 36px}
+  .miles{list-style:none;display:flex;flex-direction:column;gap:26px;margin-top:6px}
+  .miles li{display:flex;gap:22px;align-items:flex-start}
+  .miles li i{font-family:var(--serif);font-style:italic;font-weight:600;font-size:52px;line-height:.9;color:var(--gold);flex-shrink:0;width:44px;text-align:center}
+  .miles li b{display:block;font-size:18px;font-weight:800;margin-bottom:4px}
+  .miles li p{color:var(--ink-dim);font-size:15px;max-width:52ch}
+  @media (max-width:900px){.path{grid-template-columns:1fr}.path-photo{min-height:240px}.path-photo::after{background:linear-gradient(to bottom,transparent 45%,var(--surface) 100%)}.path-in{padding:28px 24px}}
+
+  /* ── кому подойдёт ── */
+  .who{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .wc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px 24px 22px;position:relative;display:flex;gap:18px;align-items:flex-start}
+  .wbadge{flex-shrink:0;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,rgba(201,138,70,.22),rgba(201,138,70,.06));border:1px solid var(--gold-deep);color:var(--gold);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:17px}
+  .wc b{display:block;font-size:17px;font-weight:800;margin-bottom:5px}
+  .wc p{color:var(--ink-dim);font-size:14.5px}
+  @media (max-width:900px){.who{grid-template-columns:1fr}}
+
+  /* ── бегущая строка эфира ── */
+  .marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:84px;padding:15px 0;position:relative;left:50%;transform:translateX(-50%);width:100vw}
+  .marq-in{display:flex;width:max-content;animation:marq 36s linear infinite}
+  .marq-seq{display:flex;align-items:center;white-space:nowrap;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+  .marq-seq span{padding:0 26px}
+  .marq-seq i{color:var(--gold);font-style:normal;font-size:9px}
+  @keyframes marq{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.marq-in{animation:none}}
 @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/CormorantGaramond-600i-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
 @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/CormorantGaramond-600i-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 @font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/Manrope-400-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
@@ -395,6 +444,30 @@
         <img src="learn_photo.jpg" alt="Руслан за работой">
       </div>
     </section>
+<section id="results">
+    <div class="sec-head"><h2>Мои результаты</h2><span class="tag">за год · без рубля на рекламу</span></div>
+    <div class="res">
+      <a class="prof" href="https://instagram.com/ruslan.ai.blog">
+        <span class="phead">
+          <img src="ava.jpg" alt="Профиль @ruslan.ai.blog в Instagram">
+          <span><b>@ruslan.ai.blog</b><span>автор видео Reels · автор ИИ</span></span>
+        </span>
+        <span class="pnums">
+          <span><b>67</b><span>публикаций</span></span>
+          <span><b>54,1 тыс.</b><span>подписчиков</span></span>
+        </span>
+        <span class="pgo">Открыть профиль и сверить →</span>
+      </a>
+      <div class="res-nums">
+        <svg class="res-chart" viewBox="0 0 400 160" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,152 60,146 120,132 180,120 240,86 300,56 400,8" fill="none" stroke="rgba(201,138,70,.10)" stroke-width="9" stroke-linecap="round"/><polyline points="0,152 60,146 120,132 180,120 240,86 300,56 400,8" fill="none" stroke="rgba(201,138,70,.32)" stroke-width="2"/></svg>
+        <div class="rn"><b>0 → <em>54 000</em></b><span>подписчиков за год</span></div>
+        <div class="rn"><b>17,8 млн</b><span>суммарных просмотров</span></div>
+        <div class="rn"><b><em>3,4 млн</em></b><span>рекорд одного ролика</span></div>
+        <div class="rn"><b>10 роликов</b><span>больше 500 тыс. каждый</span></div>
+      </div>
+    </div>
+    <p class="shelf-note">// скриншот нарисовать можно, счётчики в профиле — нет. нажмите и сверьте.</p>
+  </section>
 <section id="learn">
     <div class="learn">
       <div class="learn-in">
@@ -412,6 +485,31 @@
         <p style="margin:18px 0 0;font-size:14.5px;color:var(--ink-faint)">Пока не готов к личному формату — начни с <b style="color:var(--gold)">гайда за 1 490 ₽</b>: первое фото, первый ролик и анимация по шагам. Напиши «ГАЙД».</p>
       </div>
     </div>
+  </section>
+  <div class="seam" aria-hidden="true" data-tc="— 00:02:04 —"></div>
+  <section id="path">
+    <div class="path">
+      <div class="path-photo" role="img" aria-label="Руслан, автор нейро-сериалов"></div>
+      <div class="path-in">
+        <div class="sec-head" style="margin-bottom:16px"><h2>Чему научишься</h2><span class="tag">путь одного ролика</span></div>
+        <ol class="miles">
+          <li><i>1</i><div><b>Придумывать истории, которые досматривают</b><p>сюжет, герои, крючок первых секунд — на разборах моих серий-миллионников</p></div></li>
+          <li><i>2</i><div><b>Генерировать кадры и оживлять их</b><p>картинка → анимация → липсинк: та же связка нейросетей, которой я собираю сериалы</p></div></li>
+          <li><i>3</i><div><b>Собирать ролик целиком</b><p>озвучка, монтаж, субтитры, обложка — от первых заготовок до файла на публикацию</p></div></li>
+          <li><i>4</i><div><b>Выпускать и расти</b><p>серии, обложки, алгоритмы — чтобы первый ролик не остался единственным</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section id="who">
+    <div class="sec-head"><h2>Кому подойдёт</h2><span class="tag">честно — не всем</span></div>
+    <div class="who">
+      <div class="wc"><span class="wbadge">✓</span><div><b>Новичку без опыта</b><p>весь путь показываю с нуля и на живых примерах — «какой кнопкой» тоже спрашивать можно</p></div></div>
+      <div class="wc"><span class="wbadge">✓</span><div><b>Блогеру и эксперту</b><p>свой нейро-сериал вместо чужих трендов: зритель возвращается за продолжением</p></div></div>
+      <div class="wc"><span class="wbadge">✓</span><div><b>Тому, кто хочет на этом зарабатывать</b><p>навык, за который платят бренды, — сам беру заказы от 5 000 ₽ за ролик</p></div></div>
+      <div class="wc"><span class="wbadge">✓</span><div><b>Занятому</b><p>формат один на один: созвоны подстраиваем под твой график, дедлайнов нет</p></div></div>
+    </div>
+    <p class="shelf-note">// не подойдёт тем, кто ждёт кнопку «сделать красиво»: работать всё равно придётся.</p>
   </section>
   <div class="seam" aria-hidden="true" data-tc="— 00:04:20 —"></div>
   <section id="edu-price">
@@ -439,10 +537,15 @@
     <p style="margin-top:10px;color:var(--ink-faint);font-size:14px">Это промпт №10 — «говорящий персонаж под липсинк». Остальные девять такие же рабочие: скопировал → вставил → получил кадр.</p>
   </section>
 
+  <div class="marq" aria-hidden="true"><div class="marq-in">
+    <div class="marq-seq"><span>Сценарий</span><i>◆</i><span>Генерация</span><i>◆</i><span>Липсинк</span><i>◆</i><span>Озвучка</span><i>◆</i><span>Монтаж</span><i>◆</i><span>Обложки</span><i>◆</i><span>Алгоритмы</span><i>◆</i><span>Публикация</span><i>◆</i></div>
+    <div class="marq-seq"><span>Сценарий</span><i>◆</i><span>Генерация</span><i>◆</i><span>Липсинк</span><i>◆</i><span>Озвучка</span><i>◆</i><span>Монтаж</span><i>◆</i><span>Обложки</span><i>◆</i><span>Алгоритмы</span><i>◆</i><span>Публикация</span><i>◆</i></div>
+  </div></div>
+
 </div>
 <div class="final">
   <img class="author-solo" src="ava.jpg" alt="Руслан">
-  
+  <h2>Я дошёл сам — тебя <span style="color:var(--gold)">проведу быстрее</span></h2>
   <p>Через месяц ты можешь листать чужие ролики — или публиковать свои.</p>
   <div class="cta-row" style="justify-content:center;margin-top:0">
     <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator">Написать «ОБУЧЕНИЕ»</a>
