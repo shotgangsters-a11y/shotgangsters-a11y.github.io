@@ -399,6 +399,38 @@
   /* ── герой: автор в кадре ── */
   .cover .bgs{background:radial-gradient(75% 85% at 78% 38%,rgba(223,162,84,.13),transparent 62%),linear-gradient(180deg,#1b0f08 0%,var(--ground) 94%)}
   .cover .me{position:absolute;inset:0 0 0 auto;width:min(52vw,880px);background:url(hero_about.jpg) 46% 16%/cover no-repeat;-webkit-mask-image:linear-gradient(to left,#000 62%,transparent 100%);mask-image:linear-gradient(to left,#000 62%,transparent 100%)}
+
+  /* ── что заказать: витрина услуг с ценами ── */
+  .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .offer-card{position:relative;display:flex;flex-direction:column;gap:10px;text-decoration:none;overflow:hidden;
+      background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 24px 22px;
+      transition:transform .2s,border-color .2s,box-shadow .2s}
+  .offer-card:hover,.offer-card:focus-visible{transform:translateY(-4px);border-color:var(--gold-deep);
+      box-shadow:0 16px 50px rgba(0,0,0,.45)}
+  .offer-card::after{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--gold);opacity:0;transition:opacity .2s}
+  .offer-card:hover::after{opacity:1}
+  .offer-card .oc-top{display:flex;align-items:center;gap:12px}
+  .oc-ico{width:40px;height:40px;border-radius:12px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,rgba(223,162,84,.22),rgba(223,162,84,.05));border:1px solid var(--gold-deep)}
+  .oc-ico svg{width:20px;height:20px;fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .offer-card h3{font-size:18.5px;font-weight:700;letter-spacing:-.01em}
+  .offer-card p{color:var(--ink-dim);font-size:14.5px;flex:1}
+  .offer-card .oc-price{font-family:var(--mono);font-size:13px;color:var(--gold);letter-spacing:.04em}
+  .offer-card .oc-go{font-size:14px;color:var(--ink-faint);transition:color .2s}
+  .offer-card:hover .oc-go{color:var(--gold)}
+  .offer-card.wide{grid-column:span 3;flex-direction:row;align-items:center;gap:22px;
+      background:linear-gradient(135deg,rgba(223,162,84,.13),rgba(223,162,84,.02) 62%),var(--surface);border-color:var(--gold-deep)}
+  .offer-card.wide p{max-width:56ch}
+  .offer-card.wide .oc-price{font-size:15px;white-space:nowrap}
+  @media (max-width:900px){.offers{grid-template-columns:1fr}.offer-card.wide{grid-column:auto;flex-direction:column;align-items:flex-start}}
+
+  /* ── как заказать: три шага ── */
+  .how{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:hw}
+  .how-step{background:var(--surface-2);border:1px solid var(--line);border-radius:18px;padding:26px 24px;position:relative}
+  .how-step b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--gold);margin-bottom:12px}
+  .how-step h3{font-size:17.5px;font-weight:700;margin-bottom:6px}
+  .how-step p{color:var(--ink-dim);font-size:15px}
+  @media (max-width:900px){.how{grid-template-columns:1fr}}
   /* ── иконки выгод ── */
   .svc-ico{width:46px;height:46px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;
     background:linear-gradient(135deg,rgba(223,162,84,.24),rgba(223,162,84,.06));border:1px solid var(--gold-deep);
@@ -472,36 +504,48 @@
   </div>
 </section>
 
-  <section id="why">
-    <div class="sec-head"><h2>Что это даст вам</h2><span class="tag">боли, которые я закрываю</span></div>
-    <div class="services" style="grid-template-columns:repeat(2,1fr)">
-      <div class="svc">
-        <span class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 17.5 9 11l4 3.5 8-8.5"/><path d="M15 6h6v6"/></svg></span>
-        <span class="num">БЛОГЕРАМ И ЭКСПЕРТАМ</span>
-        <h3>«Охваты упали, Reels не залетают»</h3>
-        <p>Разработаю под вас нейро-сериал: сюжет, герои, серии. Зритель возвращается за продолжением — алгоритм это обожает. Так я сам вырос <b style="color:var(--ink)">с нуля до 54 000 подписчиков за год</b>, без рубля на рекламу.</p>
-      </div>
-      <div class="svc">
-        <span class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10.5 21 7.5v9l-5-3"/></svg></span>
-        <span class="num">БРЕНДАМ И ТОВАРКЕ</span>
-        <h3>«Реклама дорожает, съёмки — это месяц»</h3>
-        <p>Ваш продукт становится частью истории, которую досматривают, а не проматывают. Без продакшена, актёров и согласований: <b style="color:var(--ink)">готовый ролик через 3–5 дней</b> от брифа.</p>
-      </div>
-      <div class="svc">
-        <span class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M16.5 7.5c0-1.9-2-3-4.5-3s-4.5 1.1-4.5 3 2 2.7 4.5 3.2 4.5 1.3 4.5 3.3-2 3-4.5 3-4.5-1.1-4.5-3"/></svg></span>
-        <span class="num">МАЛОМУ БИЗНЕСУ</span>
-        <h3>«На видеопродакшн нет бюджета»</h3>
-        <p>Ролик под ключ <b style="color:var(--ink)">от 5 000 ₽</b> — с идеей, сценарием, озвучкой и монтажом. Контент, который выглядит как у больших, по цене одного обеда с клиентом.</p>
-      </div>
-      <div class="svc">
-        <span class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12.5" rx="2"/><path d="M3 12.5h18M12 8v12.5"/><path d="M12 8c-.6-2.4-2-3.5-3.6-3.5-1.3 0-2.4 1-2.4 2.2 0 .9.9 1.3 6 1.3zm0 0c.6-2.4 2-3.5 3.6-3.5 1.3 0 2.4 1 2.4 2.2 0 .9-.9 1.3-6 1.3z"/></svg></span>
-        <span class="num">ЛЮДЯМ</span>
-        <h3>«Хочу подарок, который запомнят»</h3>
-        <p>Раскрытие пола на гендер-пати, история вашей любви мультфильмом к свадьбе, ролик на день рождения, ожившее семейное фото, песня про вашу историю — <b style="color:var(--ink)">от 1 000 ₽</b>. Мурашки гарантирую.</p>
-      </div>
+  <section id="offers">
+    <div class="sec-head"><h2>Что заказать</h2><span class="tag">цены — стартовые, точную скажу после брифа</span></div>
+    <div class="offers">
+      <a class="offer-card" href="price.html#video-price">
+        <span class="oc-top"><span class="oc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10.5 21 7.5v9l-5-3"/></svg></span><h3>Ролик под ключ</h3></span>
+        <p>Ваш AI-ролик от идеи до готового файла: сценарий, генерация, озвучка, липсинк, монтаж. Готов за 3–5 дней.</p>
+        <span class="oc-price">от 5 000 ₽</span><span class="oc-go">Подробнее →</span>
+      </a>
+      <a class="offer-card" href="price.html#video-price">
+        <span class="oc-top"><span class="oc-ico"><svg viewBox="0 0 24 24"><path d="M3 17.5 9 11l4 3.5 8-8.5"/><path d="M15 6h6v6"/></svg></span><h3>Интеграция в сериал</h3></span>
+        <p>Ваш бренд внутри истории, которую уже ждут 54 000 подписчиков. Средний ролик — 237 000 просмотров.</p>
+        <span class="oc-price">от 10 000 ₽</span><span class="oc-go">Подробнее →</span>
+      </a>
+      <a class="offer-card" href="price.html#video-price">
+        <span class="oc-top"><span class="oc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></span><h3>Свой сериал</h3></span>
+        <p>Свои герои и сквозной сюжет: зритель возвращается за продолжением, а бренд живёт в каждой серии.</p>
+        <span class="oc-price">от 2 000 ₽ за эпизод</span><span class="oc-go">Подробнее →</span>
+      </a>
+      <a class="offer-card wide" href="gender.html">
+        <span class="oc-ico" style="width:46px;height:46px"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7 3.7C19 16.4 12 21 12 21z"/></svg></span>
+        <span style="flex:1"><h3>Ролик для гендер-пати</h3>
+        <p>Пол ребёнка гости узнают прямо из ролика: история, пауза — и в финале малыш с вашими чертами.</p></span>
+        <span class="oc-price">от 3 500 ₽</span><span class="oc-go">Открыть →</span>
+      </a>
+      <a class="offer-card" href="price.html#single-price">
+        <span class="oc-top"><span class="oc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12.5" rx="2"/><path d="M3 12.5h18M12 8v12.5"/></svg></span><h3>Подарок и событие</h3></span>
+        <p>Оживление фото, песня на заказ, ролик-поздравление, история любви мультфильмом, AI-фотосессия.</p>
+        <span class="oc-price">от 1 000 ₽</span><span class="oc-go">Подробнее →</span>
+      </a>
+      <a class="offer-card" href="sites.html">
+        <span class="oc-top"><span class="oc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 7h.01M10 7h.01"/></svg></span><h3>Сайт с ИИ</h3></span>
+        <p>Лендинг или многостраничник как этот: дизайн, тексты, домен и запуск — быстрее и дешевле студии.</p>
+        <span class="oc-price">от 15 000 ₽</span><span class="oc-go">Подробнее →</span>
+      </a>
+      <a class="offer-card" href="learn.html">
+        <span class="oc-top"><span class="oc-ico"><svg viewBox="0 0 24 24"><path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 12v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V12"/></svg></span><h3>Обучение</h3></span>
+        <p>Научу делать такие ролики самому: от идеи до опубликованной работы, один на один без потока.</p>
+        <span class="oc-price">от 25 000 ₽</span><span class="oc-go">Подробнее →</span>
+      </a>
     </div>
   </section>
-<div class="seam" aria-hidden="true" data-tc="— 00:00:12 —"></div>
+
   <section id="cases">
     <div class="sec-head">
       <h2>Сейчас смотрят</h2>
@@ -535,6 +579,46 @@
     </div>
     <p class="shelf-note">// все кадры сгенерированы нейросетями. цифры — живые: скриншот нарисовать можно, счётчик под роликом в Instagram — нет. нажмите и сверьте.</p>
   </section>
+  <section id="why">
+    <div class="sec-head"><h2>Что это даст вам</h2><span class="tag">боли, которые я закрываю</span></div>
+    <div class="services" style="grid-template-columns:repeat(2,1fr)">
+      <div class="svc">
+        <span class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 17.5 9 11l4 3.5 8-8.5"/><path d="M15 6h6v6"/></svg></span>
+        <span class="num">БЛОГЕРАМ И ЭКСПЕРТАМ</span>
+        <h3>«Охваты упали, Reels не залетают»</h3>
+        <p>Разработаю под вас нейро-сериал: сюжет, герои, серии. Зритель возвращается за продолжением — алгоритм это обожает. Так я сам вырос <b style="color:var(--ink)">с нуля до 54 000 подписчиков за год</b>, без рубля на рекламу.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10.5 21 7.5v9l-5-3"/></svg></span>
+        <span class="num">БРЕНДАМ И ТОВАРКЕ</span>
+        <h3>«Реклама дорожает, съёмки — это месяц»</h3>
+        <p>Ваш продукт становится частью истории, которую досматривают, а не проматывают. Без продакшена, актёров и согласований: <b style="color:var(--ink)">готовый ролик через 3–5 дней</b> от брифа.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M16.5 7.5c0-1.9-2-3-4.5-3s-4.5 1.1-4.5 3 2 2.7 4.5 3.2 4.5 1.3 4.5 3.3-2 3-4.5 3-4.5-1.1-4.5-3"/></svg></span>
+        <span class="num">МАЛОМУ БИЗНЕСУ</span>
+        <h3>«На видеопродакшн нет бюджета»</h3>
+        <p>Ролик под ключ <b style="color:var(--ink)">от 5 000 ₽</b> — с идеей, сценарием, озвучкой и монтажом. Контент, который выглядит как у больших, по цене одного обеда с клиентом.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12.5" rx="2"/><path d="M3 12.5h18M12 8v12.5"/><path d="M12 8c-.6-2.4-2-3.5-3.6-3.5-1.3 0-2.4 1-2.4 2.2 0 .9.9 1.3 6 1.3zm0 0c.6-2.4 2-3.5 3.6-3.5 1.3 0 2.4 1 2.4 2.2 0 .9-.9 1.3-6 1.3z"/></svg></span>
+        <span class="num">ЛЮДЯМ</span>
+        <h3>«Хочу подарок, который запомнят»</h3>
+        <p>Раскрытие пола на гендер-пати, история вашей любви мультфильмом к свадьбе, ролик на день рождения, ожившее семейное фото, песня про вашу историю — <b style="color:var(--ink)">от 1 000 ₽</b>. Мурашки гарантирую.</p>
+      </div>
+    </div>
+  </section>
+<div class="seam" aria-hidden="true" data-tc="— 00:00:12 —"></div>
+  <section id="how">
+    <div class="sec-head"><h2>Как это работает</h2><span class="tag">три шага, без созвонов и брифов на десять листов</span></div>
+    <div class="how">
+      <div class="how-step"><b>ШАГ 01</b><h3>Пишете в Telegram</h3><p>Задам три вопроса — про продукт, задачу и срок. Отвечаю лично, без менеджеров.</p></div>
+      <div class="how-step"><b>ШАГ 02</b><h3>Называю цену и срок</h3><p>Согласуем сюжет и стиль до старта. Правки в рамках брифа входят в цену.</p></div>
+      <div class="how-step"><b>ШАГ 03</b><h3>Получаете ролик</h3><p>Готовый файл 9:16 и 16:9 — публикуйте где угодно, права ваши после оплаты.</p></div>
+    </div>
+    <div class="cta-row"><a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%BE%D0%BB%D0%B8%D0%BA.%20%D0%9C%D0%BE%D1%8F%20%D0%BD%D0%B8%D1%88%D0%B0%3A%20">Написать в Telegram</a><a class="btn btn-ghost" href="price.html">Все цены</a></div>
+  </section>
+
 </div>
 <div class="marq" aria-hidden="true"><div class="marq-in">
   <div class="marq-seq"><span>Нейро-сериалы</span><i>◆</i><span>AI-Reels</span><i>◆</i><span>Интеграции брендов</span><i>◆</i><span>Гендер-пати</span><i>◆</i><span>Оживление фото</span><i>◆</i><span>Песня на заказ</span><i>◆</i><span>AI-фотосессия</span><i>◆</i><span>Сайты</span><i>◆</i><span>Обучение</span><i>◆</i></div>
