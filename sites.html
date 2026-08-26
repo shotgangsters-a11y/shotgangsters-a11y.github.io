@@ -229,7 +229,9 @@
   .topbar .tnav a:hover,.topbar .tnav a:focus-visible{color:var(--gold)}
   .topbar .tcta{border:0;background:var(--gold);color:#241303;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:0;padding:8px 16px;border-radius:999px}
   .topbar .tcta:hover{box-shadow:0 4px 22px rgba(223,162,84,.4);color:#241303}
-  @media (max-width:1080px){.tnav{display:none}}   /* шесть пунктов не влезают на ноутбуке — прячем раньше */
+  @media (max-width:820px){.tnav{display:none}}
+  /* шесть пунктов на ноутбуке: сжимаем меню, а не прячем — вид страницы не меняется */
+  @media (max-width:1150px){.tnav{gap:15px}.topbar .tnav a{font-size:13.5px}.topbar .tcta{padding:7px 12px;font-size:12.5px}}
   /* строка цифр вместо плашек */
   .statline{display:flex;flex-wrap:wrap;margin:30px 0 34px;border-top:1px solid rgba(242,239,230,.16);border-bottom:1px solid rgba(242,239,230,.16)}
   .statline > div{padding:16px 28px 15px 0;margin-right:28px;border-right:1px solid rgba(242,239,230,.12)}
@@ -363,7 +365,7 @@
   /* мобильное меню */
   .tright{display:flex;align-items:center;gap:10px}
   .burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:40px;height:36px;color:var(--ink);font-size:17px;cursor:pointer;padding:0;line-height:1}
-  @media (max-width:1080px){.burger{display:inline-flex;align-items:center;justify-content:center}}
+  @media (max-width:820px){.burger{display:inline-flex;align-items:center;justify-content:center}}
   .mnav{display:none;position:fixed;inset:0;background:rgba(21,12,6,.98);z-index:200;flex-direction:column;justify-content:center;padding:28px}
   .mnav.open{display:flex}
   .mnav a{font-size:26px;font-weight:700;text-decoration:none;color:var(--ink);padding:16px 8px;border-bottom:1px solid var(--line);letter-spacing:-.01em}
