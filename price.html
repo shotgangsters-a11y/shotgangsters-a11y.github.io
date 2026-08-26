@@ -353,6 +353,52 @@
   .gp-price{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 20px}
   .gp-price b{font-size:clamp(28px,3.3vw,38px);font-weight:800;color:var(--gold);letter-spacing:-.02em}
   .gp-price span{font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.05em}
+
+  /* ── живое раскрытие: гость нажимает и видит момент ── */
+  .gp-art{cursor:pointer;user-select:none}
+  .gp-art .hint{position:relative;z-index:4;font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+      color:rgba(253,246,236,.78);border:1px solid rgba(253,246,236,.30);border-radius:999px;padding:9px 18px;
+      background:rgba(10,6,3,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:opacity .3s,transform .3s}
+  .gp-art:hover .hint{transform:translateY(-2px);border-color:rgba(253,246,236,.55)}
+  .gp-art .verdict{position:absolute;z-index:4;font-weight:800;letter-spacing:-.02em;font-size:clamp(38px,5.2vw,68px);
+      opacity:0;transform:scale(.82);transition:opacity .45s,transform .45s cubic-bezier(.2,1.5,.4,1);text-align:center;line-height:1.05}
+  .gp-art .verdict small{display:block;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.16em;
+      text-transform:uppercase;color:rgba(253,246,236,.72);margin-top:12px}
+  .gp-art.done .q{opacity:0;transform:scale(.7)}
+  .gp-art .q{transition:opacity .35s,transform .45s}
+  .gp-art.done .hint{opacity:0;pointer-events:none}
+  .gp-art.girl .verdict.v-girl,.gp-art.boy .verdict.v-boy{opacity:1;transform:scale(1)}
+  .gp-art .verdict.v-girl{color:#F5B7CE;text-shadow:0 8px 40px rgba(223,143,174,.55)}
+  .gp-art .verdict.v-boy{color:#A8CDF2;text-shadow:0 8px 40px rgba(120,169,220,.55)}
+  .gp-art.girl{background:radial-gradient(85% 65% at 50% 45%,rgba(223,143,174,.75),transparent 70%),linear-gradient(155deg,#2b1420,#150c06)}
+  .gp-art.boy{background:radial-gradient(85% 65% at 50% 45%,rgba(120,169,220,.75),transparent 70%),linear-gradient(155deg,#101d2b,#150c06)}
+  .gp-art.done::before{opacity:0;transition:opacity .4s}
+  /* конфетти вылетает при раскрытии */
+  .gp-art.done i{animation:burst .9s cubic-bezier(.2,.8,.3,1) forwards}
+  .gp-art.done .c1{--dx:-120px;--dy:-90px}.gp-art.done .c2{--dx:130px;--dy:-110px}
+  .gp-art.done .c3{--dx:-150px;--dy:120px}.gp-art.done .c4{--dx:140px;--dy:130px}
+  .gp-art.done .c5{--dx:170px;--dy:10px}.gp-art.done .c6{--dx:-170px;--dy:-20px}
+  @keyframes burst{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1.9);opacity:0}}
+  .gp-again{position:absolute;z-index:5;bottom:18px;left:50%;transform:translateX(-50%);opacity:0;pointer-events:none;transition:opacity .4s;
+      font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(253,246,236,.7);
+      background:rgba(10,6,3,.5);border:1px solid rgba(253,246,236,.24);border-radius:999px;padding:7px 15px;cursor:pointer}
+  .gp-art.done .gp-again{opacity:1;pointer-events:auto}
+  @media (prefers-reduced-motion:reduce){.gp-art i{animation:none!important}.gp-art .verdict,.gp-art .q{transition:none}}
+
+  /* ── раскадровка: как устроен ролик ── */
+  .gp-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}
+  .gp-fr{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+      display:flex;flex-direction:column;justify-content:flex-end;padding:18px 16px 16px}
+  .gp-fr::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(10,6,3,.9) 92%)}
+  .gp-fr b{position:relative;z-index:2;font-size:15.5px;font-weight:800;line-height:1.15}
+  .gp-fr span{position:relative;z-index:2;font-size:13.5px;color:rgba(242,239,230,.72);margin-top:5px;line-height:1.35}
+  .gp-fr i{position:absolute;top:14px;left:16px;z-index:2;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.14em;
+      color:rgba(253,246,236,.8);background:rgba(10,6,3,.5);border:1px solid rgba(253,246,236,.2);border-radius:999px;padding:4px 10px}
+  .gp-fr.f1{background:radial-gradient(90% 60% at 40% 25%,rgba(223,162,84,.4),transparent 65%),linear-gradient(170deg,#2a1a0d,#150c06)}
+  .gp-fr.f2{background:radial-gradient(90% 60% at 60% 30%,rgba(168,205,242,.35),transparent 65%),linear-gradient(170deg,#16202b,#150c06)}
+  .gp-fr.f3{background:radial-gradient(90% 60% at 45% 30%,rgba(245,183,206,.35),transparent 65%),linear-gradient(170deg,#2a1620,#150c06)}
+  .gp-fr.f4{background:radial-gradient(70% 45% at 30% 35%,rgba(120,169,220,.55),transparent 62%),radial-gradient(70% 45% at 72% 60%,rgba(223,143,174,.55),transparent 62%),linear-gradient(170deg,#241428,#150c06)}
+  @media (max-width:900px){.gp-strip{grid-template-columns:repeat(2,1fr)}}
   .gp-tabs{display:flex;gap:8px;margin:0 0 22px;padding:5px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;width:max-content;max-width:100%}
   .gp-tab{appearance:none;border:0;cursor:pointer;font-family:var(--display);font-size:14.5px;font-weight:700;
       padding:11px 20px;border-radius:999px;background:transparent;color:var(--ink-dim);transition:color .18s,background .18s;white-space:nowrap}
@@ -519,9 +565,13 @@
   <section id="gender">
     <div class="sec-head"><h2>Ролик для гендер-пати</h2><span class="tag">мальчик или девочка</span></div>
     <div class="gp">
-      <div class="gp-art" aria-hidden="true">
-        <span class="q">?</span>
+      <div class="gp-art" id="gpReveal" role="button" tabindex="0" aria-label="Показать, как выглядит раскрытие в ролике">
+        <span class="q" aria-hidden="true">?</span>
+        <span class="verdict v-girl" aria-hidden="true">ДЕВОЧКА<small>так это видят гости</small></span>
+        <span class="verdict v-boy" aria-hidden="true">МАЛЬЧИК<small>так это видят гости</small></span>
+        <span class="hint">Нажмите — раскроем</span>
         <i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i><i class="c5"></i><i class="c6"></i>
+        <span class="gp-again" id="gpAgain">Ещё раз</span>
         <span class="band"></span>
       </div>
       <div class="gp-in">
@@ -576,6 +626,12 @@
           // если сюрприз готовите для самих родителей — пол мне сообщаете вы, и до праздника его не знает никто.
         </p>
       </div>
+    </div>
+    <div class="gp-strip">
+      <div class="gp-fr f1"><i>01</i><b>Интрига</b><span>тёплое начало: вы, тест, две полоски — зритель уже улыбается</span></div>
+      <div class="gp-fr f2"><i>02</i><b>Ожидание</b><span>ваша история: УЗИ, споры об имени, как готовили сюрприз</span></div>
+      <div class="gp-fr f3"><i>03</i><b>Пауза</b><span>кадр замирает, гости замолкают — секунда перед ответом</span></div>
+      <div class="gp-fr f4"><i>04</i><b>Раскрытие</b><span>конфетти нужного цвета и малыш в кадре — тот самый момент</span></div>
     </div>
   </section>
 
@@ -709,6 +765,21 @@
 
 
 <script>
+  (() => {
+    const art = document.getElementById('gpReveal');
+    if (!art) return;
+    const again = document.getElementById('gpAgain');
+    const reveal = () => {
+      if (art.classList.contains('done')) return;
+      art.classList.add('done', Math.random() < 0.5 ? 'girl' : 'boy');
+    };
+    art.addEventListener('click', reveal);
+    art.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reveal(); } });
+    again.addEventListener('click', e => {
+      e.stopPropagation();
+      art.classList.remove('done', 'girl', 'boy');
+    });
+  })();
   (() => {
     const tabs = document.querySelectorAll('.gp-tab');
     if (!tabs.length) return;
