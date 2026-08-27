@@ -508,6 +508,32 @@
       display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
   @media (max-width:900px){.ghero{grid-template-columns:1fr;gap:28px;padding-top:26px}.gcard{min-height:300px}}
 
+
+  /* ── два формата: телевизор на празднике и телефон в сторис ── */
+  .fmt{display:grid;grid-template-columns:1.35fr .65fr;gap:26px;align-items:end}
+  .tv{position:relative;border-radius:18px;padding:14px 14px 0;background:linear-gradient(180deg,#2a1a0d,#1a1008);
+      border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.5)}
+  .tv .screen{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;gap:10px;
+      background:radial-gradient(75% 60% at 30% 40%,rgba(120,169,220,.55),transparent 65%),
+                 radial-gradient(75% 60% at 72% 62%,rgba(223,143,174,.55),transparent 65%),linear-gradient(160deg,#241a10,#120a05)}
+  .tv .screen b{font-size:clamp(20px,3vw,34px);font-weight:800;color:#fdf6ec;letter-spacing:-.01em;text-align:center;line-height:1.1}
+  .tv .screen span{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(253,246,236,.7)}
+  .tv .stand{height:16px;margin:12px auto 0;width:34%;border-radius:0 0 12px 12px;background:linear-gradient(180deg,#2a1a0d,#150c06);border:1px solid var(--line);border-top:0}
+  .tv .cap,.phone .cap{position:absolute;top:26px;left:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+      text-transform:uppercase;color:rgba(253,246,236,.75);background:rgba(10,6,3,.5);border:1px solid rgba(253,246,236,.2);
+      border-radius:999px;padding:5px 11px;z-index:3}
+  .phone{position:relative;border-radius:26px;padding:10px;background:linear-gradient(180deg,#2a1a0d,#160d07);
+      border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+  .phone .screen{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;gap:8px;text-align:center;padding:16px;
+      background:radial-gradient(70% 45% at 50% 32%,rgba(223,143,174,.5),transparent 62%),
+                 radial-gradient(70% 45% at 50% 74%,rgba(120,169,220,.5),transparent 62%),linear-gradient(160deg,#241a10,#120a05)}
+  .phone .screen b{font-size:17px;font-weight:800;color:#fdf6ec}
+  .phone .screen span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(253,246,236,.7)}
+  .phone .notch{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:34%;height:5px;border-radius:999px;background:rgba(10,6,3,.7);z-index:2}
+  .fmt-note{margin-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);letter-spacing:.04em}
+  @media (max-width:900px){.fmt{grid-template-columns:1fr;gap:20px}.phone{max-width:260px}}
   .gsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   .gstep{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 24px}
   .gstep b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--gold);margin-bottom:12px}
@@ -581,6 +607,22 @@
   </section>
 
   <div class="seam" aria-hidden="true" data-tc="— 00:00:30 —"></div>
+
+  <section id="formats">
+    <div class="sec-head"><h2>Два формата в одном заказе</h2><span class="tag">экран на празднике и рилс</span></div>
+    <div class="fmt">
+      <div class="tv">
+        <span class="cap">16:9 · телевизор и проектор</span>
+        <div class="screen"><b>Мальчик или девочка?</b><span>кадр замирает — гости замолкают</span></div>
+        <div class="stand"></div>
+      </div>
+      <div class="phone">
+        <span class="notch"></span>
+        <div class="screen"><b>Тот же ролик<br>в сторис</b><span>9:16 · reels и tiktok</span></div>
+      </div>
+    </div>
+    <p class="fmt-note">// один заказ — два файла: горизонтальный включаете на празднике, вертикальный выкладываете в тот же вечер.</p>
+  </section>
 
   <section id="varianty">
     <div class="sec-head"><h2>Два варианта</h2><span class="tag">выберите свой</span></div>
