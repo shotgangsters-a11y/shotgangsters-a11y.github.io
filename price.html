@@ -1,771 +1,105 @@
 <!doctype html>
 <html lang="ru">
+<head>
 <meta charset="utf-8">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23150c06%22/%3E%3Cpolygon points=%2238,28 76,50 38,72%22 fill=%22%23f0b243%22/%3E%3C/svg%3E">
-<title>Услуги и цены — ruslan.ai.blog</title>
+<title>Услуги и цены — RUSLAN.AI</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="description" content="AI-ролик под ключ от 5 000 ₽, интеграция в сериал от 10 000 ₽, свой сериал от 2 000 ₽ за эпизод. Честные цены, правки включены.">
-<meta property="og:title" content="Услуги и цены — ruslan.ai.blog">
-<meta property="og:description" content="AI-ролик под ключ от 5 000 ₽, интеграция в сериал от 10 000 ₽, свой сериал от 2 000 ₽ за эпизод. Честные цены, правки включены.">
+<meta name="description" content="Цены на AI-ролики: под ключ от 5 000 ₽, интеграция от 10 000 ₽, сериал от 2 000 ₽ за эпизод, гендер-пати от 3 500 ₽, отдельные услуги от 1 000 ₽.">
+<meta property="og:title" content="Услуги и цены — RUSLAN.AI">
+<meta property="og:description" content="Цены на AI-ролики: под ключ от 5 000 ₽, интеграция от 10 000 ₽, сериал от 2 000 ₽ за эпизод, гендер-пати от 3 500 ₽, отдельные услуги от 1 000 ₽.">
 <meta property="og:image" content="https://ruslan-ai-blog.ru/og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%23121820%22/%3E%3Cpolygon points=%2238,28 76,50 38,72%22 fill=%22%23205cff%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="motion-background" id="motion" aria-hidden="true">
+  <div class="motion-grid"></div><div class="motion-beam"></div><div class="motion-ribbon"></div>
+  <div class="motion-orbit motion-orbit-one"></div><div class="motion-orbit motion-orbit-two"></div>
+  <div class="motion-cursor"></div><div class="motion-noise"></div>
+</div>
 
-<style>
-  /* ── Единственная тема: кинозал. Все цвета заданы явно. ── */
-  :root{
-    --ground:#150c06;        /* зал, свет погашен */
-    --surface:#211408;
-    --surface-2:#2a1a0d;
-    --line:#3d2b18;
-    --ink:#f2efe6;           /* тёплый экранный белый */
-    --ink-dim:#A8A49B;
-    --ink-faint:#8f8b7d;
-    --gold:#DFA254;          /* луч проектора */
-    --gold-deep:#b8813e;
-    --terra:#9E493D;
-    --rec:#9E493D;           /* точка записи */
-    --mono:"SF Mono","Menlo","Consolas",monospace;
-    --display:"Manrope","Helvetica Neue",sans-serif;
-    --serif:"Cormorant Garamond",Georgia,serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    background:radial-gradient(120% 80% at 50% 0%,rgba(223,162,84,.04) 0%,#1d1109 18%,#150c06 55%) fixed,#150c06;
-    color:var(--ink);
-    font-family:var(--display);
-    font-size:17px;line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  /* зерно плёнки поверх всего */
-  body::after{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.045;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;
-  }
-  a{color:inherit}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-
-  /* ── верхняя строка: как плашка эфира ── */
-  .topbar{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:18px 0;font-family:var(--mono);font-size:12px;letter-spacing:.08em;
-    color:var(--ink-dim);
-  }
-  .rec{display:inline-flex;align-items:center;gap:8px}
-  .rec i{width:8px;height:8px;border-radius:50%;background:var(--rec);display:inline-block;animation:blink 1.6s steps(1) infinite}
-  @keyframes blink{50%{opacity:.15}}
-  .topbar a{text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:999px;transition:border-color .2s,color .2s}
-  .topbar a:hover,.topbar a:focus-visible{border-color:var(--gold);color:var(--gold)}
-
-  /* ── герой ── */
-  .hero{padding:64px 0 40px;position:relative}
-  /* луч проектора */
-  .hero::before{
-    content:"";position:absolute;top:-220px;left:50%;transform:translateX(-50%);
-    width:900px;height:620px;pointer-events:none;
-    background:radial-gradient(ellipse at 50% 0%,rgba(223,162,84,.16),rgba(223,162,84,.04) 45%,transparent 70%);
-  }
-  .eyebrow{
-    font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--gold);margin-bottom:22px;
-  }
-  h1{
-    font-size:clamp(40px,7.2vw,84px);line-height:.98;letter-spacing:-.015em;
-    font-weight:700;text-wrap:balance;max-width:18ch;
-  }
-  h1 .g{color:var(--gold);font-family:var(--serif);font-style:italic;font-weight:600;letter-spacing:0}
-  .hero p.lede{margin:28px 0 0;max-width:56ch;font-size:clamp(17px,2vw,20px);color:var(--ink-dim)}
-  .hero p.lede b{color:var(--ink);font-weight:600}
-  /* автор: ава из инсты + подпись */
-  .author{display:flex;align-items:center;gap:16px;margin-top:30px}
-  .author img{width:76px;height:76px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 26px rgba(223,162,84,.3);display:block}
-  .author b{display:block;font-size:18px;font-weight:800}
-  .author span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-faint)}
-  .final .author-solo{width:88px;height:88px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 34px rgba(223,162,84,.35);margin:0 auto 24px;display:block;position:relative}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
-    font-weight:700;font-size:16px;padding:17px 30px;border-radius:999px;
-    transition:transform .15s,box-shadow .2s,border-color .2s;
-  }
-  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-  .btn-gold{background:linear-gradient(135deg,#f0cd92,var(--gold) 55%,#cf9040);color:#241303;box-shadow:0 6px 30px rgba(223,162,84,.28)}
-  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(223,162,84,.4)}
-  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
-
-  /* цифры как титры */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:56px 0 0}
-  .stat{background:var(--surface);padding:26px 24px}
-  .stat b{display:block;font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-  .stat b em{font-style:normal;color:var(--gold)}
-  .stat span{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
-
-  /* ── секции ── */
-  section{padding:84px 0 0}
-  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:30px;flex-wrap:wrap}
-  h2{font-size:clamp(26px,3.6vw,40px);font-weight:700;letter-spacing:-.01em}
-  .sec-head .tag{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
-
-  /* ── афиши сериалов ── */
-  .shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .poster{
-    aspect-ratio:9/16;border-radius:18px;overflow:hidden;position:relative;
-    display:flex;flex-direction:column;justify-content:flex-end;
-    text-decoration:none;border:1px solid var(--line);
-    transition:transform .25s,box-shadow .25s;
-  }
-  .poster:hover,.poster:focus-visible{transform:translateY(-6px) scale(1.015);box-shadow:0 18px 50px rgba(0,0,0,.55)}
-  .poster .art{position:absolute;inset:0}
-  .poster video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  @media (prefers-reduced-motion:reduce){.poster video{display:none}}
-  .poster .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,6,3,.88) 88%)}
-  .poster .views{
-    position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
-    background:rgba(10,6,3,.72);border:1px solid rgba(255,255,255,.14);border-radius:999px;
-    padding:5px 10px;display:flex;align-items:center;gap:6px;color:var(--ink);
-  }
-  .poster .views i{width:6px;height:6px;border-radius:50%;background:var(--rec);display:inline-block}
-  .poster .meta{position:relative;display:block;padding:16px 16px 14px}
-  .poster .title{display:block;font-weight:800;font-size:clamp(16px,1.7vw,21px);line-height:1.08;text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
-  .poster .kind{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(242,239,230,.62);margin-top:8px}
-  .poster .bar{position:relative;height:3px;background:rgba(255,255,255,.14)}
-  .poster .bar i{position:absolute;inset:0;right:auto;background:var(--gold)}
-  /* афишная графика — у каждого сериала свой мир */
-  .art-1{background:
-    radial-gradient(120% 90% at 80% 12%,#7a1420 0%,transparent 55%),
-    radial-gradient(100% 80% at 15% 90%,#2a0509 0%,transparent 60%),
-    linear-gradient(165deg,#3d0a12 0%,#12060a 70%)}
-  .art-1::after{content:"";position:absolute;left:14%;right:14%;top:34%;height:1px;background:linear-gradient(90deg,transparent,#e4574f,transparent);box-shadow:0 0 24px 4px rgba(228,87,79,.55)}
-  .art-2{background:linear-gradient(115deg,#0e2c4e 0 49.7%,#13070d 49.7% 50.3%,#5a2410 50.3% 100%)}
-  .art-2::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 45% at 28% 30%,rgba(120,180,255,.28),transparent 65%),radial-gradient(70% 45% at 74% 68%,rgba(240,140,60,.3),transparent 65%)}
-  .art-3{background:
-    radial-gradient(90% 60% at 50% 20%,rgba(223,162,84,.5),transparent 60%),
-    linear-gradient(180deg,#1c1408 0%,#0d0a05 100%)}
-  .art-3::after{content:"";position:absolute;left:50%;top:16%;width:120px;height:120px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle at 38% 32%,#ffe9b8,#DFA254 55%,#8a5a10);filter:blur(1px);box-shadow:0 0 70px 20px rgba(223,162,84,.4)}
-  .art-4{background:
-    radial-gradient(110% 80% at 20% 15%,#5b1d5e 0%,transparent 60%),
-    radial-gradient(110% 80% at 85% 85%,#28356e 0%,transparent 60%),
-    linear-gradient(160deg,#2b0f33,#0e0b1e)}
-  .art-4::after{content:"";position:absolute;left:18%;top:26%;width:26px;height:26px;border-radius:50%;border:3px solid rgba(255,160,220,.8);box-shadow:44px 18px 0 -6px rgba(255,160,220,.5),90px -8px 0 -9px rgba(255,160,220,.35)}
-  .shelf-note{margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.05em}
-
-  /* ── что я делаю ── */
-  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .svc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:12px}
-  .svc .num{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.14em}
-  .svc h3{font-size:21px;font-weight:700;letter-spacing:.01em}
-  .svc p{color:var(--ink-dim);font-size:15.5px}
-
-  /* ── как заказать: киношная хлопушка шагов ── */
-  .steps{counter-reset:step;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-  .step{background:var(--surface-2);padding:30px 26px}
-  .step b{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--gold);margin-bottom:14px}
-  .step h3{font-size:19px;font-weight:800;margin-bottom:8px}
-  .step h3 .kw{background:var(--gold);color:#241303;padding:1px 8px;border-radius:4px;white-space:nowrap}
-  .step p{color:var(--ink-dim);font-size:15px}
-
-  /* ── финальный призыв ── */
-  .final{margin-top:96px;position:relative;text-align:center;padding:90px 24px 100px;border-top:1px solid var(--line)}
-  .final::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:760px;height:420px;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(223,162,84,.14),transparent 70%)}
-  .final h2{max-width:22ch;margin:0 auto 18px}
-  .final p{color:var(--ink-dim);max-width:52ch;margin:0 auto 34px}
-
-  footer{border-top:1px solid var(--line);padding:30px 0 46px}
-  .foot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-faint)}
-  .foot a{color:var(--ink-dim);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
-  .foot a:hover,.foot a:focus-visible{color:var(--gold);border-color:var(--gold)}
-
-  @media (max-width:900px){
-    .shelf{grid-template-columns:repeat(2,1fr)}
-    .services{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr}
-    .stats{grid-template-columns:1fr 1fr}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{animation:none!important;transition:none!important}
-    html{scroll-behavior:auto}
-  }
-
-  /* обучение */
-  .learn{margin-top:84px;position:relative;border:1px solid var(--gold-deep);border-radius:20px;overflow:hidden;background:linear-gradient(135deg,rgba(223,162,84,.10),rgba(223,162,84,.02) 55%),var(--surface)}
-  .learn-in{padding:44px 40px;max-width:720px}
-  .learn .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-  .learn h2{margin-bottom:14px}
-  .learn p{color:var(--ink-dim);margin-bottom:18px;max-width:56ch}
-  .learn ul{list-style:none;margin:0 0 26px;display:flex;flex-direction:column;gap:10px}
-  .learn li{padding-left:26px;position:relative;color:var(--ink-dim)}
-  .learn li::before{content:"—";position:absolute;left:0;color:var(--gold)}
-  .learn .kw2{background:var(--gold);color:#241303;padding:1px 8px;border-radius:4px;white-space:nowrap;font-weight:700}
-  @media (max-width:900px){.learn-in{padding:32px 24px}}
-
-  .herobg{position:absolute;inset:-40px -100vw 0 -100vw;z-index:-1;overflow:hidden}
-  .herobg video{width:100vw;height:120%;object-fit:cover;filter:blur(26px) brightness(.30) saturate(1.2);transform:scale(1.15)}
-  .herobg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,6,.2),var(--ground) 92%)}
-  .hero{position:relative}
-
-  /* полноэкранная обложка-шоурил */
-  .topbar{position:relative;z-index:6}
-  .cover{position:relative;left:50%;transform:translateX(-50%);width:100vw;min-height:92vh;min-height:92svh;display:flex;align-items:flex-end;margin-top:-72px;padding:120px max(24px,calc((100vw - 1120px)/2)) 72px}
-  .cover .bgs{position:absolute;inset:0;overflow:hidden}
-  .cover .bgs video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease;filter:brightness(.42) saturate(1.15)}
-  .cover .bgs video.on{opacity:1}
-  .cover .bgs::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,6,.6),rgba(21,12,6,.12) 45%,var(--ground) 97%),linear-gradient(90deg,rgba(21,12,6,.55),transparent 60%)}
-  .cover-in{position:relative;z-index:2;max-width:1120px;width:100%}
-  .cover h1{font-size:clamp(44px,7.6vw,92px);text-shadow:0 4px 40px rgba(0,0,0,.5)}
-  .cover .lede{color:var(--ink);opacity:.85}
-  .chips{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 32px}
-  .chip{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;padding:9px 15px;border:1px solid rgba(242,239,230,.28);border-radius:999px;background:rgba(10,6,3,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--ink)}
-  .chip b{color:var(--gold);font-family:var(--display);font-weight:800}
-  .cover .author{margin-top:34px}
-  @media (max-width:900px){.cover{min-height:96vh;min-height:96svh;padding-bottom:56px}}
-
-  .topbar{position:sticky;top:0;z-index:50;padding:7px 0}
-  .topbar::before{content:"";position:absolute;inset:0 -100vw -28px;background:rgba(21,12,6,.72);-webkit-backdrop-filter:blur(14px) brightness(.92);backdrop-filter:blur(14px) brightness(.92);z-index:-1;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 62%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 62%,transparent 100%)}
-  .tnav{display:flex;gap:26px}
-  .topbar .tnav a{border:0;padding:0;border-radius:0;font-family:var(--display);font-size:14.5px;letter-spacing:0;color:var(--ink-dim)}
-  .topbar .tnav a:hover,.topbar .tnav a:focus-visible{color:var(--gold)}
-  .topbar .tcta{border:0;background:var(--gold);color:#241303;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:0;padding:8px 16px;border-radius:999px}
-  .topbar .tcta:hover{box-shadow:0 4px 22px rgba(223,162,84,.4);color:#241303}
-  @media (max-width:820px){.tnav{display:none}}
-  /* шесть пунктов на ноутбуке: сжимаем меню, а не прячем — вид страницы не меняется */
-  @media (max-width:1150px){.tnav{gap:15px}.topbar .tnav a{font-size:13.5px}.topbar .tcta{padding:7px 12px;font-size:12.5px}}
-  /* строка цифр вместо плашек */
-  .statline{display:flex;flex-wrap:wrap;margin:30px 0 34px;border-top:1px solid rgba(242,239,230,.16);border-bottom:1px solid rgba(242,239,230,.16)}
-  .statline > div{padding:16px 28px 15px 0;margin-right:28px;border-right:1px solid rgba(242,239,230,.12)}
-  .statline > div:last-child{border-right:0;margin-right:0}
-  .statline b{display:block;font-size:clamp(21px,2.4vw,27px);font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
-  .statline b em{font-style:normal;color:var(--gold)}
-  .statline span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,239,230,.55)}
-  @media (max-width:760px){.statline > div{padding:12px 18px 11px 0;margin-right:18px}}
-  /* статичная обложка */
-  .cover .bgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.46) saturate(1.05)}
-
-  /* боли: «знакомо?» */
-  .pain{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 24px;color:var(--ink-dim);font-size:15.5px;position:relative}
-  .pain b{display:block;color:var(--ink);font-size:17px;margin-bottom:8px;font-weight:800}
-  .pain::before{content:"✕";position:absolute;top:22px;right:22px;color:var(--rec);font-weight:700;opacity:.7}
-  /* бонусы */
-  .bonus{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .bonus li{list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px 18px 48px;position:relative;color:var(--ink-dim);font-size:15.5px}
-  .bonus li::before{content:"✓";position:absolute;left:20px;top:17px;color:var(--gold);font-weight:800;font-size:17px}
-  .bonus li b{color:var(--ink)}
-  @media (max-width:900px){.bonus{grid-template-columns:1fr}}
-  /* автор */
-  .about{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:start}
-  .about img{width:240px;height:240px;border-radius:22px;object-fit:cover;border:1px solid var(--gold-deep);box-shadow:0 12px 50px rgba(223,162,84,.15)}
-  .about ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:18px}
-  .about li{padding-left:26px;position:relative;color:var(--ink-dim)}
-  .about li::before{content:"—";position:absolute;left:0;color:var(--gold)}
-  .about li b{color:var(--ink)}
-  .about .role{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-  .about h3{font-size:26px;font-weight:800;margin:6px 0 4px}
-  @media (max-width:900px){.about{grid-template-columns:1fr}.about img{width:100%;height:auto;aspect-ratio:1}}
-  /* faq */
-  .faq{display:flex;flex-direction:column;gap:10px}
-  .faq details{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  .faq summary{cursor:pointer;padding:19px 22px;font-weight:700;font-size:16.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"+";color:var(--gold);font-size:22px;font-weight:400;flex-shrink:0}
-  .faq details[open] summary::after{content:"–"}
-  .faq details p{padding:0 22px 20px;color:var(--ink-dim);max-width:70ch}
-  .faq details p b{color:var(--ink)}
-  .requisites{margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-faint);text-align:center;line-height:1.8}
-  .requisites a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
-  .requisites a:hover,.requisites a:focus-visible{color:var(--gold);border-color:var(--gold)}
-
-  /* тарифы */
-  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
-  .plan{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;gap:0;position:relative}
-  .plan.hot{border-color:var(--gold);box-shadow:0 12px 50px rgba(223,162,84,.12)}
-  .plan .hotb{position:absolute;top:-12px;left:24px;background:var(--gold);color:#241303;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px}
-  .plan h3{font-size:19px;font-weight:700;margin-bottom:6px}
-  .plan .for{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
-  .plan .price{font-size:clamp(30px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:2px}
-  .plan .price small{font-size:15px;font-weight:400;color:var(--ink-dim)}
-  .plan .per{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin-bottom:20px}
-  .plan ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 26px}
-  .plan li{padding-left:24px;position:relative;color:var(--ink-dim);font-size:14.5px}
-  .plan li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
-  .plan .btn{margin-top:auto;justify-content:center}
-  @media (max-width:900px){.plans{grid-template-columns:1fr}}
-  /* мини-прайс для людей */
-  .mini-price{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:14px;margin-top:26px}
-  .mini-price a{text-decoration:none}
-  .mp.hotmp{border-color:var(--gold);box-shadow:0 6px 30px rgba(223,162,84,.10)}
-  .mp{background:var(--surface-2);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
-  .mp b{display:block;font-size:22px;font-weight:800;color:var(--gold);margin-bottom:2px}
-  .mp span{font-size:14px;color:var(--ink)}
-  .mp i{display:block;font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-top:6px;letter-spacing:.06em}
-  @media (max-width:900px){.mini-price{grid-template-columns:1fr 1fr}}
-
-  /* журнальный список услуг */
-  .svc-rows{border-top:1px solid var(--line)}
-  .svc-row{display:grid;grid-template-columns:52px 1fr 1.5fr auto;gap:20px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none}
-  .svc-row .n{font-family:var(--mono);font-size:12px;color:var(--gold)}
-  .svc-row h3{font-size:clamp(18px,2vw,23px);font-weight:700;color:var(--ink);letter-spacing:.01em;transition:color .15s}
-  .svc-row p{color:var(--ink-dim);font-size:14.5px;margin:0}
-  .svc-row .pr{font-family:var(--mono);font-size:13px;color:var(--gold);white-space:nowrap}
-  .svc-row:hover h3,.svc-row:focus-visible h3{color:var(--gold)}
-  @media (max-width:900px){.svc-row{grid-template-columns:36px 1fr auto}.svc-row p{grid-column:2/4}}
-  /* шапка внутренних страниц */
-  .page-head{padding:60px 0 10px}
-  .page-head h1{font-size:clamp(36px,5vw,58px);font-weight:700;letter-spacing:-.01em}
-  .page-head .eyebrow{margin-bottom:14px}
-  .topbar .tnav a.on{color:var(--gold)}
-
-
-  /* ── гендер-пати: розовый и голубой только здесь ── */
-  #gender{--boy:#78A9DC;--girl:#DF8FAE}
-  .gp{display:grid;grid-template-columns:.82fr 1.18fr;gap:0;align-items:stretch;
-      background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden}
-  .gp-art{position:relative;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden;
-      background:radial-gradient(90% 60% at 26% 24%,rgba(120,169,220,.62),transparent 66%),
-                 radial-gradient(90% 60% at 76% 78%,rgba(223,143,174,.62),transparent 66%),
-                 linear-gradient(155deg,#241a10,#150c06)}
-  .gp-art::before{content:"";position:absolute;inset:-20%;background:
-      radial-gradient(closest-side,rgba(120,169,220,.5),transparent) 18% 22%/46% 46% no-repeat,
-      radial-gradient(closest-side,rgba(223,143,174,.5),transparent) 82% 80%/46% 46% no-repeat;filter:blur(26px)}
-  .gp-art .cap{position:relative;font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(253,246,236,.72)}
-  .gp-art .q{position:relative;font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(120px,14vw,210px);line-height:.9;
-      background:linear-gradient(118deg,var(--boy) 8%,#fdf6ec 50%,var(--girl) 92%);
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-      filter:drop-shadow(0 12px 44px rgba(0,0,0,.55))}
-  .gp-art i{position:absolute;border-radius:50%;opacity:.95;box-shadow:0 0 18px currentColor}
-  .gp-art .c1{width:14px;height:14px;background:var(--boy);color:var(--boy);left:17%;top:22%}
-  .gp-art .c2{width:10px;height:10px;background:var(--girl);color:var(--girl);left:79%;top:19%}
-  .gp-art .c3{width:16px;height:16px;background:var(--girl);color:var(--girl);left:23%;top:76%}
-  .gp-art .c4{width:11px;height:11px;background:var(--boy);color:var(--boy);left:73%;top:80%}
-  .gp-art .c5{width:8px;height:8px;background:var(--boy);color:var(--boy);left:86%;top:48%;opacity:.75}
-  .gp-art .c6{width:8px;height:8px;background:var(--girl);color:var(--girl);left:11%;top:54%;opacity:.75}
-  .gp-art .band{position:absolute;left:0;right:0;bottom:0;height:5px;
-      background:linear-gradient(90deg,var(--boy),#fdf6ec 50%,var(--girl))}
-  .gp-in{padding:38px 40px 34px}
-  .gp-in .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;
-      background:linear-gradient(90deg,var(--boy),var(--girl));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .gp-in h3{font-size:clamp(22px,2.7vw,31px);font-weight:700;margin:0 0 13px;letter-spacing:-.01em}
-  .gp-in > p{color:var(--ink-dim);margin:0 0 18px;max-width:54ch}
-  .gp-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 22px}
-  .gp-list li{padding-left:26px;position:relative;color:var(--ink-dim);font-size:15.5px}
-  .gp-list li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
-  .gp-list li b{color:var(--ink)}
-  .gp-price{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 20px}
-  .gp-price b{font-size:clamp(28px,3.3vw,38px);font-weight:800;color:var(--gold);letter-spacing:-.02em}
-  .gp-price span{font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.05em}
-
-  /* ── живое раскрытие: гость нажимает и видит момент ── */
-  .gp-art{cursor:pointer;user-select:none}
-  .gp-art .hint{position:relative;z-index:4;font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
-      color:rgba(253,246,236,.78);border:1px solid rgba(253,246,236,.30);border-radius:999px;padding:9px 18px;
-      background:rgba(10,6,3,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:opacity .3s,transform .3s}
-  .gp-art:hover .hint{transform:translateY(-2px);border-color:rgba(253,246,236,.55)}
-  .gp-art .verdict{position:absolute;z-index:4;font-weight:800;letter-spacing:-.02em;font-size:clamp(38px,5.2vw,68px);
-      opacity:0;transform:scale(.82);transition:opacity .45s,transform .45s cubic-bezier(.2,1.5,.4,1);text-align:center;line-height:1.05}
-  .gp-art .verdict small{display:block;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.16em;
-      text-transform:uppercase;color:rgba(253,246,236,.72);margin-top:12px}
-  .gp-art.done .q{opacity:0;transform:scale(.7)}
-  .gp-art .q{transition:opacity .35s,transform .45s}
-  .gp-art.done .hint{opacity:0;pointer-events:none}
-  .gp-art.girl .verdict.v-girl,.gp-art.boy .verdict.v-boy{opacity:1;transform:scale(1)}
-  .gp-art .verdict.v-girl{color:#F5B7CE;text-shadow:0 8px 40px rgba(223,143,174,.55)}
-  .gp-art .verdict.v-boy{color:#A8CDF2;text-shadow:0 8px 40px rgba(120,169,220,.55)}
-  .gp-art.girl{background:radial-gradient(85% 65% at 50% 45%,rgba(223,143,174,.75),transparent 70%),linear-gradient(155deg,#2b1420,#150c06)}
-  .gp-art.boy{background:radial-gradient(85% 65% at 50% 45%,rgba(120,169,220,.75),transparent 70%),linear-gradient(155deg,#101d2b,#150c06)}
-  .gp-art.done::before{opacity:0;transition:opacity .4s}
-  /* конфетти вылетает при раскрытии */
-  .gp-art.done i{animation:burst .9s cubic-bezier(.2,.8,.3,1) forwards}
-  .gp-art.done .c1{--dx:-120px;--dy:-90px}.gp-art.done .c2{--dx:130px;--dy:-110px}
-  .gp-art.done .c3{--dx:-150px;--dy:120px}.gp-art.done .c4{--dx:140px;--dy:130px}
-  .gp-art.done .c5{--dx:170px;--dy:10px}.gp-art.done .c6{--dx:-170px;--dy:-20px}
-  @keyframes burst{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1.9);opacity:0}}
-  .gp-again{position:absolute;z-index:5;bottom:18px;left:50%;transform:translateX(-50%);opacity:0;pointer-events:none;transition:opacity .4s;
-      font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(253,246,236,.7);
-      background:rgba(10,6,3,.5);border:1px solid rgba(253,246,236,.24);border-radius:999px;padding:7px 15px;cursor:pointer}
-  .gp-art.done .gp-again{opacity:1;pointer-events:auto}
-  @media (prefers-reduced-motion:reduce){.gp-art i{animation:none!important}.gp-art .verdict,.gp-art .q{transition:none}}
-
-  /* ── раскадровка: как устроен ролик ── */
-  .gp-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}
-  .gp-fr{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:1px solid var(--line);
-      display:flex;flex-direction:column;justify-content:flex-end;padding:18px 16px 16px}
-  .gp-fr::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(10,6,3,.9) 92%)}
-  .gp-fr b{position:relative;z-index:2;font-size:15.5px;font-weight:800;line-height:1.15}
-  .gp-fr span{position:relative;z-index:2;font-size:13.5px;color:rgba(242,239,230,.72);margin-top:5px;line-height:1.35}
-  .gp-fr i{position:absolute;top:14px;left:16px;z-index:2;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.14em;
-      color:rgba(253,246,236,.8);background:rgba(10,6,3,.5);border:1px solid rgba(253,246,236,.2);border-radius:999px;padding:4px 10px}
-  .gp-fr.f1{background:radial-gradient(90% 60% at 40% 25%,rgba(223,162,84,.4),transparent 65%),linear-gradient(170deg,#2a1a0d,#150c06)}
-  .gp-fr.f2{background:radial-gradient(90% 60% at 60% 30%,rgba(168,205,242,.35),transparent 65%),linear-gradient(170deg,#16202b,#150c06)}
-  .gp-fr.f3{background:radial-gradient(90% 60% at 45% 30%,rgba(245,183,206,.35),transparent 65%),linear-gradient(170deg,#2a1620,#150c06)}
-  .gp-fr.f4{background:radial-gradient(70% 45% at 30% 35%,rgba(120,169,220,.55),transparent 62%),radial-gradient(70% 45% at 72% 60%,rgba(223,143,174,.55),transparent 62%),linear-gradient(170deg,#241428,#150c06)}
-  @media (max-width:900px){.gp-strip{grid-template-columns:repeat(2,1fr)}}
-  .gp-tabs{display:flex;gap:8px;margin:0 0 22px;padding:5px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;width:max-content;max-width:100%}
-  .gp-tab{appearance:none;border:0;cursor:pointer;font-family:var(--display);font-size:14.5px;font-weight:700;
-      padding:11px 20px;border-radius:999px;background:transparent;color:var(--ink-dim);transition:color .18s,background .18s;white-space:nowrap}
-  .gp-tab:hover{color:var(--ink)}
-  .gp-tab[aria-selected="true"]{color:#241303;background:linear-gradient(135deg,var(--boy),#f5e4d2 52%,var(--girl))}
-  .gp-tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  .gp-pane{display:none}
-  .gp-pane.on{display:block}
-  .gp-pane .lead{color:var(--ink-dim);margin:0 0 16px;max-width:54ch}
-  @media (max-width:600px){.gp-tabs{width:100%}.gp-tab{flex:1;padding:11px 12px;font-size:13.5px}}
-  @media (max-width:900px){
-    .gp{grid-template-columns:1fr}
-    .gp-art{min-height:210px}
-    .gp-in{padding:28px 24px 26px}
-  }
-  .plans.four{grid-template-columns:repeat(4,1fr)}
-  @media (max-width:900px){.plans.four{grid-template-columns:1fr 1fr}}
-  @media (max-width:600px){.plans.four{grid-template-columns:1fr}}
-  .grp-note{color:var(--ink-faint);font-size:14px;margin:-14px 0 24px;font-family:var(--mono)}
-
-  .durs{display:flex;flex-direction:column;margin:0 0 20px;border-top:1px solid var(--line)}
-  .durs div{display:flex;justify-content:space-between;align-items:baseline;padding:9px 2px;border-bottom:1px solid var(--line);font-size:14.5px}
-  .durs span{color:var(--ink-dim)}
-  .durs b{font-variant-numeric:tabular-nums;color:var(--ink)}
-
-  .phero{position:relative;left:50%;transform:translateX(-50%);width:100vw;margin-top:-72px;padding:150px max(24px,calc((100vw - 1120px)/2)) 56px;overflow:hidden}
-  .phero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.85) saturate(1.02);z-index:-2}
-  .phero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,6,.35),rgba(21,12,6,.08) 45%,var(--ground) 98%);z-index:-1}
-  .phero h1{font-size:clamp(36px,5vw,58px);font-weight:700;letter-spacing:-.01em;text-shadow:0 4px 30px rgba(0,0,0,.5)}
-  .phero .eyebrow{margin-bottom:14px}
-
-  .mcta{display:none}
-  @media (max-width:760px){
-    .mcta{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;background:var(--gold);color:#241303;font-weight:800;font-size:16px;justify-content:center;padding:15px;border-radius:18px;text-decoration:none;box-shadow:0 10px 40px rgba(223,162,84,.4)}
-    body{padding-bottom:74px}
-  }
-
-  /* соц-иконки */
-  .socials{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .sic{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color .2s,transform .15s;padding:0}
-  .sic svg{width:17px;height:17px;fill:var(--ink-dim);transition:fill .2s}
-  .sic:hover,.sic:focus-visible{border-color:var(--gold);transform:translateY(-2px)}
-  .sic:hover svg,.sic:focus-visible svg{fill:var(--gold)}
-  .sic.soon{opacity:.38}
-  .foot{align-items:center}
-
-  #video-price,#single-price,#faq{position:relative}
-  #video-price::before{content:"";position:absolute;left:-34vw;top:0;width:42vw;height:100%;background:radial-gradient(ellipse,rgba(223,162,84,.09),transparent 70%);pointer-events:none}
-  #single-price::after{content:"";position:absolute;right:-32vw;top:-10%;width:42vw;height:110%;background:radial-gradient(ellipse,rgba(223,162,84,.08),transparent 70%);pointer-events:none}
-  #faq::before{content:"";position:absolute;left:-30vw;bottom:0;width:38vw;height:80%;background:radial-gradient(ellipse,rgba(223,162,84,.06),transparent 70%);pointer-events:none}
-
-  /* ── слоистый фон: спека агентов ── */
-  :root{--scrim-up:linear-gradient(to top,rgba(21,12,6,1) 0%,rgba(21,12,6,.74) 19%,rgba(21,12,6,.54) 34%,rgba(21,12,6,.38) 47%,rgba(21,12,6,.28) 56%,rgba(21,12,6,.19) 65%,rgba(21,12,6,.13) 73%,rgba(21,12,6,.08) 80%,rgba(21,12,6,.04) 86%,rgba(21,12,6,.02) 91%,rgba(21,12,6,0) 100%)}
-  .seam{position:relative;height:1px;margin:84px auto 0;max-width:720px;background:linear-gradient(90deg,transparent,rgba(223,162,84,.4),transparent)}
-  .seam::after{content:attr(data-tc);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:0 14px;background:var(--ground);font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:rgba(223,162,84,.55)}
-  .spot{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(600px circle at var(--mx,50%) var(--my,30%),rgba(223,162,84,.05),transparent 70%)}
-  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
-
-  #video-price{background:linear-gradient(180deg,#150c06 0%,#0e1118 18%,#0e1118 82%,#150c06 100%)}
-  #video-price::after{content:"";position:absolute;left:-10vw;right:-10vw;top:-30px;height:55vh;pointer-events:none;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(223,162,84,.09),transparent 70%)}
-
-  /* мобильное меню */
-  .tright{display:flex;align-items:center;gap:10px}
-  .burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:40px;height:36px;color:var(--ink);font-size:17px;cursor:pointer;padding:0;line-height:1}
-  @media (max-width:820px){.burger{display:inline-flex;align-items:center;justify-content:center}}
-  .mnav{display:none;position:fixed;inset:0;background:rgba(21,12,6,.98);z-index:200;flex-direction:column;justify-content:center;padding:28px}
-  .mnav.open{display:flex}
-  .mnav a{font-size:26px;font-weight:700;text-decoration:none;color:var(--ink);padding:16px 8px;border-bottom:1px solid var(--line);letter-spacing:-.01em}
-  .mnav a:active,.mnav a.on{color:var(--gold)}
-  .mnav .mclose{position:absolute;top:16px;right:20px;font-size:30px;background:none;border:0;color:var(--ink);cursor:pointer;padding:8px}
-  .mnav .mtg{margin-top:26px;background:var(--gold);color:#241303;text-align:center;border-radius:16px;border-bottom:0;font-size:18px;padding:16px}
-@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/CormorantGaramond-600i-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
-@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/CormorantGaramond-600i-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/Manrope-400-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/Manrope-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/Manrope-700-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/Manrope-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/Manrope-800-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
-@font-face{font-family:'Manrope';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/Manrope-800-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-
-  /* оффер запуска */
-  .offer{position:relative;border-radius:22px;overflow:hidden;background:linear-gradient(135deg,rgba(223,162,84,.16),rgba(158,73,61,.08) 60%),var(--surface);border:1px solid var(--gold);box-shadow:0 16px 70px rgba(223,162,84,.14);padding:30px 32px;margin-top:56px}
-  .offer .ob{position:absolute;top:18px;right:-34px;transform:rotate(38deg);background:var(--terra);color:#fff;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;padding:6px 40px;text-transform:uppercase}
-  .offer .ok2{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-  .offer h3{font-size:clamp(21px,2.6vw,28px);font-weight:700;margin:0 0 10px;letter-spacing:-.01em}
-  .offer .oprice{display:flex;align-items:baseline;gap:14px;margin:8px 0 14px}
-  .offer .oprice b{font-size:clamp(30px,3.6vw,42px);font-weight:800;color:var(--gold)}
-  .offer .oprice s{color:var(--ink-faint);font-size:18px}
-  .offer ul{list-style:none;margin:0 0 20px;display:flex;flex-direction:column;gap:8px}
-  .offer li{padding-left:24px;position:relative;color:var(--ink-dim)}
-  .offer li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
-  .offer li b{color:var(--ink)}
-  .offer .oseats{font-family:var(--mono);font-size:12px;color:var(--terra);letter-spacing:.08em;margin-top:12px}
-</style>
-<div class="spot" aria-hidden="true"></div>
-<nav class="mnav" id="mnav" aria-label="Меню">
-  <button class="mclose" aria-label="Закрыть">✕</button>
-  <a href="index.html">Главная</a>
-  <a href="works.html">Работы</a><a href="price.html" class="on">Услуги и цены</a><a href="gender.html">Гендер-пати</a><a href="sites.html">Сайты</a><a href="about.html">Обо мне</a><a href="learn.html">Обучение</a>
-  <a class="mtg" href="https://t.me/ruslan_ai_creator">Написать в Telegram</a>
-</nav>
-<div class="wrap">
-  <header class="topbar">
-    <a href="index.html" style="text-decoration:none"><span class="rec"><i></i>RUSLAN.AI.BLOG</span></a>
-    <nav class="tnav"><a href="works.html">Работы</a><a href="price.html" class="on">Услуги и цены</a><a href="gender.html">Гендер-пати</a><a href="sites.html">Сайты</a><a href="about.html">Обо мне</a><a href="learn.html">Обучение</a></nav>
-    <span class="tright"><a class="tcta" href="https://t.me/ruslan_ai_creator">Заказать ролик</a><button class="burger" id="mburger" aria-label="Меню">☰</button></span>
+<main class="site-shell page-price">
+  <aside class="edge-rail" aria-hidden="true"><span>RUSLAN.AI / DIGITAL PRODUCTION</span><b>2026</b></aside>
+  <header class="global-header">
+    <a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg></span><span>RUSLAN<span>.AI</span></span></a>
+    <nav id="nav"><a class="" href="works.html">Работы</a><a class="active" href="price.html">Услуги и цены</a><a class="" href="gender.html">Гендер-пати</a><a class="" href="sites.html">Сайты</a><a class="" href="about.html">Обо мне</a><a class="" href="learn.html">Обучение</a></nav>
+    <a class="header-button" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%82%D0%BE%D1%87%D0%BD%D1%83%D1%8E%20%D1%86%D0%B5%D0%BD%D1%83.%20%D0%9C%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A%20">Обсудить проект <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    <button class="menu-button" id="burger" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
   </header>
-<section class="phero"><img class="bg" src="hero_price.jpg" alt=""><div class="eyebrow">что делаю и сколько стоит</div><h1>Услуги и цены</h1></section>
-<section id="pains">
-    <div class="sec-head"><h2>Знакомо?</h2><span class="tag">если да — вам сюда</span></div>
-    <div class="services">
-      <div class="pain"><b>«Съёмка — это дорого и долго»</b>Продакшн, актёры, локации, согласования. Бюджет заканчивается раньше, чем появляется первый просмотр.</div>
-      <div class="pain"><b>«Рекламу в лоб проматывают»</b>Зритель научился пропускать всё, что похоже на рекламу. Досматривают истории — а их у бренда нет.</div>
-      <div class="pain"><b>«Пробовали нейросети сами»</b>Выходит «пластик», который стыдно публиковать: не тот стиль, не то лицо, не тот липсинк. Инструменты есть — результата нет.</div>
+
+  <section class="page-hero">
+    <span class="hero-ghost" aria-hidden="true">RUSLAN.AI</span>
+    <div class="page-hero-copy">
+      <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="m6.3 6.3 2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/></svg> Услуги и цены</div>
+      <h1>Понятный результат. <em>Честная стоимость</em></h1>
+      <p>Вы заранее понимаете, что входит в работу, сколько длится производство и за что платите. Итоговая цена фиксируется до старта.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%82%D0%BE%D1%87%D0%BD%D1%83%D1%8E%20%D1%86%D0%B5%D0%BD%D1%83.%20%D0%9C%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A%20">Обсудить проект <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></a>
+        <a class="button secondary" href="#details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 3v18M17 3v18M2 9h20M2 15h20"/></svg> Посмотреть подробнее</a>
+      </div>
+      <div class="facts"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Цена до старта</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Правки включены</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Без скрытых доплат</span></div>
     </div>
-  </section>
-<section id="video-price">
-    <div class="sec-head"><h2>Видео для брендов</h2><span class="tag">анимация и ролики</span></div>
-    <div class="tip" style="margin-bottom:20px">Один съёмочный день с командой стоит от 50 000 ₽ — без сценария и монтажа.
-    У меня ролик под ключ — <b>от 5 000 ₽</b>: сценарий, генерация, озвучка, липсинк, монтаж.
-    Не потому что хуже, а потому что вместо аренды студии и гонораров актёрам работают нейросети и я.</div>
-    <div class="plans">
-      <div class="plan hot">
-        <span class="hotb">выбирают чаще</span>
-        <h3>Ролик под ключ</h3><div class="for">ваш собственный AI-reels</div>
-        <div class="price">от 5 000 ₽</div><div class="per">итог зависит от сложности — скажу после брифа</div>
-        <ul>
-          <li>идея, сценарий, генерация, озвучка, монтаж</li>
-          <li>готов за 3–5 дней, формат 9:16 под все площадки</li>
-          <li>ролик ваш — публикуйте без ограничений</li>
-          <li>сначала бриф: согласуем сюжет и стиль — правки в рамках брифа включены</li>
-        </ul>
-        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%BE%D0%BB%D0%B8%D0%BA%20%D0%BF%D0%BE%D0%B4%20%D0%BA%D0%BB%D1%8E%D1%87.%20%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A%20">Заказать</a>
+    <div class="hero-stage">
+      <div class="page-hero-media media-price">
+        <img src="hero_price.jpg" alt="Производство AI-ролика">
+        <div class="media-shade"></div>
+        <span class="media-badge"><span></span> Индивидуальный проект</span>
+        <span class="media-coordinate" aria-hidden="true">55°45′N / 37°37′E</span>
+        <div class="media-caption"><span class="play-disc"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg></span><span><b>От идеи до результата</b><small>сценарий · визуал · монтаж</small></span></div>
       </div>
-      <div class="plan">
-        <h3>Интеграция</h3><div class="for">бренд в готовом сериале</div>
-        <div class="price">от 10 000 ₽</div><div class="per">точная цена — на брифе, до старта. а вот у охватов потолка нет</div>
-        <ul>
-          <li>мой средний ролик — <b style="color:var(--ink)">237 000 просмотров</b>: такой охват у блогеров стоит 40–70 тыс. ₽. Среднее по всем 75 роликам — счётчики открыты, пересчитайте сами</li>
-          <li>выход у меня — аудитория 54 000+ ждёт серию</li>
-          <li>сценарий включён; правки в рамках брифа — тоже</li>
-        </ul>
-        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8E%20%D0%B2%20%D1%81%D0%B5%D1%80%D0%B8%D0%B0%D0%BB.%20%D0%9C%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%3A%20">Обсудить</a>
-      </div>
-      <div class="plan">
-        <h3>Свой сериал</h3><div class="for">цена эпизода — по длительности</div>
-        <div class="price">от 2 000 ₽<small>/эпизод</small></div><div class="per">при заказе серии от четырёх эпизодов</div>
-        <div class="durs">
-          <div><span>до 15 секунд</span><b>от 2 000 ₽</b></div>
-          <div><span>до 30 секунд</span><b>от 3 000 ₽</b></div>
-          <div><span>до 45 секунд</span><b>от 5 000 ₽</b></div>
-          <div><span>до 60 секунд</span><b>от 7 000 ₽</b></div>
-        </div>
-        <ul>
-          <li>свои герои и сквозной сюжет под ваш бренд</li>
-          <li>зритель возвращается за продолжением</li>
-          <li>план выпусков и аналитика раз в месяц</li>
-        </ul>
-        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%81%D0%B2%D0%BE%D0%B9%20%D1%81%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D1%80%D0%B5%D0%BD%D0%B4%D0%B0.">Обсудить</a>
-      </div>
+      <div class="hero-specs" aria-hidden="true"><span>AI / 4K</span><span>FRAME 001</span><span>2026</span></div>
     </div>
   </section>
 
-  <section id="gender">
-    <div class="sec-head"><h2>Ролик для гендер-пати</h2><span class="tag">мальчик или девочка</span></div>
-    <div class="gp" style="grid-template-columns:.5fr 1.5fr">
-      <div class="gp-art" aria-hidden="true">
-        <span class="q">?</span>
-        <i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i><i class="c5"></i><i class="c6"></i>
-        <span class="band"></span>
-      </div>
-      <div class="gp-in">
-        <div class="kicker">пол объявляет сам ролик</div>
-        <h3>Пол ребёнка гости узнают прямо из ролика</h3>
-        <p>AI-мультфильм по вашим фото: история, пауза — и в финале ролик сам объявляет, мальчик или девочка,
-        показывая малыша с вашими чертами. Включаете на экране, и гости узнают вместе с вами.</p>
-        <div class="gp-price">
-          <b>от 3 500 ₽</b>
-          <span>полная история с семьёй — от 6 900 ₽ · готово за 2 дня</span>
-        </div>
-        <div class="cta-row" style="margin-top:0">
-          <a class="btn btn-gold" href="gender.html">Открыть страницу гендер-пати</a>
-          <a class="btn btn-ghost" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%BE%D0%BB%D0%B8%D0%BA%20%D0%B4%D0%BB%D1%8F%20%D0%B3%D0%B5%D0%BD%D0%B4%D0%B5%D1%80-%D0%BF%D0%B0%D1%82%D0%B8.%20%C2%AB%D0%93%D0%95%D0%9D%D0%94%D0%95%D0%A0%C2%BB">Написать «ГЕНДЕР»</a>
-        </div>
-      </div>
-    </div>
+  <section class="kinetic-strip" aria-label="Направления работы"><div><span>AI FILMS</span><i></i><span>WEB EXPERIENCES</span><i></i><span>STORY DIRECTING</span><i></i><span>AI FILMS</span><i></i><span>WEB EXPERIENCES</span><i></i><span>STORY DIRECTING</span><i></i></div></section>
+
+  <section class="value-band">
+    <p>Сильная идея. Чистый визуал. Понятный результат.</p>
+    <span>01 <b>Без шаблонов</b></span><span>02 <b>Под вашу задачу</b></span><span>03 <b>Работаю лично</b></span>
   </section>
 
-  <section id="single-price">
-    <div class="sec-head"><h2>Отдельные услуги</h2><span class="tag">для людей и подарков</span></div>
-    <div class="plans four">
-      <div class="plan">
-        <h3>Оживление фото</h3><div class="for">память в движении</div>
-        <div class="price">от 1 000 ₽</div><div class="per">за один снимок</div>
-        <ul><li>человек на фото моргает, улыбается, поворачивает голову</li><li>готово за 1 день</li></ul>
-        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B6%D0%B8%D0%B2%D0%B8%D1%82%D1%8C%20%D1%84%D0%BE%D1%82%D0%BE.%20%C2%AB%D0%A4%D0%9E%D0%A2%D0%9E%C2%BB">Заказать</a>
-      </div>
-      <div class="plan">
-        <h3>Анимация картинки</h3><div class="for">оживление изображения</div>
-        <div class="price">от 1 500 ₽</div><div class="per">за ролик до 10 секунд</div>
-        <ul><li>логотип, арт или кадр начинают двигаться</li><li>формат под сторис и рилс</li></ul>
-        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D1%83.">Заказать</a>
-      </div>
-      <div class="plan">
-        <h3>Песня на заказ</h3><div class="for">подарок или гимн</div>
-        <div class="price">от 2 000 ₽</div><div class="per">за готовый трек</div>
-        <ul><li>ваш текст или напишу по вашей истории</li><li>любой жанр, 2 варианта на выбор</li></ul>
-        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%B5%D1%81%D0%BD%D1%8E%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7.%20%C2%AB%D0%9F%D0%95%D0%A1%D0%9D%D0%AF%C2%BB">Заказать</a>
-      </div>
-      <div class="plan">
-        <h3>Ролик-история</h3><div class="for">знакомство · love story · свадьба</div>
-        <div class="price">от 5 000 ₽</div><div class="per">по вашей истории, в любом стиле</div>
-        <ul><li>сценарий пишу по вашим воспоминаниям и фото</li><li>герои — вы: от мультяшного стиля до кино</li><li>подарок на свадьбу, годовщину, юбилей отношений</li></ul>
-        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%BE%D0%BB%D0%B8%D0%BA-%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8E%20%D0%BA%20%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8E.%20%C2%AB%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%AF%C2%BB">Заказать</a>
-      </div>
-      <div class="plan">
-        <h3>Ролик-поздравление</h3><div class="for">день рождения и праздники</div>
-        <div class="price">от 3 000 ₽</div><div class="per">именной, с историей виновника торжества</div>
-        <ul><li>сюжет про именинника — смешной или трогательный</li><li>любые события: выпускной, юбилей компании, Новый год</li></ul>
-        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%BE%D0%BB%D0%B8%D0%BA-%D0%BF%D0%BE%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5.%20%C2%AB%D0%9F%D0%9E%D0%97%D0%94%D0%A0%D0%90%D0%92%D0%9B%D0%95%D0%9D%D0%98%D0%95%C2%BB">Заказать</a>
-      </div>
-      <div class="plan">
-        <h3>AI-фотосессия</h3><div class="for">портреты без студии</div>
-        <div class="price">от 2 500 ₽</div><div class="per">за пакет портретов</div>
-        <ul><li>десятки кадров в любом образе и локации</li><li>по 3–5 вашим обычным фото</li></ul>
-        <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20AI-%D1%84%D0%BE%D1%82%D0%BE%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8E.%20%C2%AB%D0%A4%D0%9E%D0%A2%D0%9E%D0%A1%D0%95%D0%A1%D0%A1%D0%98%D0%AF%C2%BB">Заказать</a>
-      </div>
-    </div>
+  <section class="content-section" id="details">
+    <div class="section-head"><span>Видео для бизнеса</span><h2>Основные форматы</h2><p>Полный цикл производства: сценарий, генерация, голос, липсинк, музыка и монтаж.</p></div>
+    <div class="cards-grid cards-4"><article class="service-card tone-violet"><div class="card-index"><span>Под ключ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="m6.3 6.3 2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/></svg></div><div class="card-body"><h3>Рекламный AI-ролик</h3><p>Индивидуальный сюжет под продукт или услугу.</p><strong>от 5 000 ₽</strong></div></article><article class="service-card tone-dark"><div class="card-index"><span>В готовый формат</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="m6.3 6.3 2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/></svg></div><div class="card-body"><h3>Интеграция в сериал</h3><p>Нативное появление бренда в истории.</p><strong>от 10 000 ₽</strong></div></article><article class="service-card tone-blue"><div class="card-index"><span>Регулярный контент</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="m6.3 6.3 2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/></svg></div><div class="card-body"><h3>Собственный сериал</h3><p>Стоимость зависит от длительности эпизода.</p><strong>от 2 000 ₽</strong></div></article><article class="service-card tone-pink"><div class="card-index"><span>Особый момент</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="m6.3 6.3 2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/></svg></div><div class="card-body"><h3>Гендер-пати</h3><p>Короткое раскрытие или история всей семьи.</p><strong>от 3 500 ₽</strong><a href="gender.html">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></article></div>
   </section>
 
-<section id="bonus">
-    <div class="sec-head"><h2>Что получаете сверх ролика</h2><span class="tag">входит в работу</span></div>
-    <ul class="bonus">
-      <li><b>Идею и сценарий придумываю я.</b> Приходите с продуктом, а не с техзаданием — насмотренность на 17,8 млн просмотров работает на вас.</li>
-      <li><b>Правки включены.</b> Дорабатываю, пока не скажете «то, что надо» — без доплат за итерации.</li>
-      <li><b>Выход в моём сериале — по договорённости.</b> Ваш бренд видит аудитория, которая уже ждёт новые серии, а не холодный трафик.</li>
-      <li><b>Формат под площадку.</b> Вертикаль 9:16 под Reels, TikTok, Shorts и VK Клипы — публикуете везде без переделок.</li>
-    </ul>
+  <section class="content-section second-section">
+    <div class="section-head"><span>Отдельные услуги</span><h2>Когда нужен один конкретный результат</h2><p>Можно заказать отдельную анимацию, песню, фотосессию или ролик к событию.</p></div>
+    <div class="detail-grid detail-4"><article class="detail-card"><span class="detail-number">01</span><h3>Оживление фото</h3><p>Движение и эмоция в одном снимке.</p><strong>от 1 000 ₽</strong></article><article class="detail-card"><span class="detail-number">02</span><h3>Анимация изображения</h3><p>Ролик до 10 секунд.</p><strong>от 1 500 ₽</strong></article><article class="detail-card"><span class="detail-number">03</span><h3>Песня на заказ</h3><p>Текст, музыка и готовый трек.</p><strong>от 2 000 ₽</strong></article><article class="detail-card"><span class="detail-number">04</span><h3>AI-фотосессия</h3><p>Пакет портретов без студии.</p><strong>от 2 500 ₽</strong></article><article class="detail-card"><span class="detail-number">05</span><h3>Ролик-поздравление</h3><p>Именная история к празднику.</p><strong>от 3 000 ₽</strong></article><article class="detail-card"><span class="detail-number">06</span><h3>Ролик-история</h3><p>Свадьба, знакомство или семейная дата.</p><strong>от 5 000 ₽</strong></article></div>
   </section>
-<section>
-    <div class="sec-head">
-      <h2>Как заказать</h2>
-      <span class="tag">три шага</span>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <b>ШАГ 01</b>
-        <h3>Напишите мне в Telegram</h3>
-        <p>Или отправьте слово <span class="kw">«БРЕНД»</span> в Direct Инстаграма. Отвечаю лично, без менеджеров.</p>
-      </div>
-      <div class="step">
-        <b>ШАГ 02</b>
-        <h3>Бриф за 10 минут</h3>
-        <p>Продукт, задача, тон. Предлагаю формат и сюжет, называю цену и срок.</p>
-      </div>
-      <div class="step">
-        <b>ШАГ 03</b>
-        <h3>Ролик через 3–5 дней</h3>
-        <p>Готовый вертикальный ролик 9:16 — публикуйте у себя или выходите в моём сериале.</p>
-      </div>
-    </div>
-  </section>
-<div class="seam" aria-hidden="true" data-tc="— 00:03:05 —"></div>
-  <section id="site-teaser">
-    <div class="tip" style="border-left-color:var(--terra)">🔥 <b>Запуск направления «Сайты»</b>: многостраничник как этот сайт — под ключ
-    с доменом и запуском за <b>от 19 900 ₽</b> вместо 45 000. Только первым трём.
-    <a href="sites.html#offer" style="color:var(--gold)">Смотреть предложение →</a></div>
-  </section>
-  <section id="risk">
-    <div class="card gold" style="background:var(--surface);border:1px solid var(--gold-deep);border-radius:18px;padding:24px 26px">
-      <h3 style="font-size:20px;font-weight:700;margin:0 0 8px">Без риска</h3>
-      <p style="margin:0;color:var(--ink-dim)"><b style="color:var(--ink)">Всё согласуем на берегу</b>: бриф до старта, работа по договорённости, правки в рамках брифа включены.
-      <b style="color:var(--ink)">Сроки 3–5 дней</b>: назвал — держу. Работаю официально как ИП: договор и чек — по запросу.</p>
-    </div>
-  </section>
-  <section id="faq">
-    <div class="sec-head"><h2>Вопросы и ответы</h2><span class="tag">коротко и честно</span></div>
-    <div class="faq">
-      <details><summary>Сколько стоит ролик?</summary><p>Интеграция в мой сериал — <b>от 10 000 ₽</b> (итог зависит от задачи), ролик под ключ — <b>от 5 000 ₽</b> (итог зависит от сложности, называю после брифа), свой сериал — по длительности эпизода: <b>от 2 000 ₽</b> за 15-секундный до <b>от 7 000 ₽</b> за минутный, при заказе серии от четырёх. Отдельные услуги: оживление фото от 1 000 ₽, анимация картинки от 1 500 ₽, песня от 2 000 ₽, AI-фотосессия от 2 500 ₽, ролик-поздравление от 3 000 ₽, ролик-история к свадьбе или знакомству — от 5 000 ₽, ролик для гендер-пати — от 3 500 ₽ (полная история с семьёй — от 6 900 ₽). Любое событие — обсудим. Цены на обучение — на странице «Обучение».</p></details>
-      <details><summary>Как быстро будет готово?</summary><p><b>3–5 дней</b> от брифа до готового вертикального ролика 9:16. Серия эпизодов — по графику, который согласуем заранее.</p></details>
-      <details><summary>Что нужно от меня?</summary><p>Продукт (фото или описание), пара тезисов — что важно донести, и куда вести зрителя. Сценарий, персонажей, озвучку и монтаж делаю я.</p></details>
-      <details><summary>Кому принадлежит ролик?</summary><p>Ролик, сделанный под ключ, — <b>ваш</b>: публикуйте на своих площадках без ограничений. Интеграция в мой сериал выходит у меня — и работает на мою аудиторию в 54 000+ подписчиков.</p></details>
-      <details><summary>Работаете с компаниями официально?</summary><p>Да, я ИП: договор, счёт и закрывающие документы — бухгалтерия будет довольна.</p></details>
-      <details><summary>А если результат не понравится?</summary><p>Мы всё согласуем до старта: на брифе показываю референсы из своих сериалов, чтобы ожидания совпали заранее. Правки в рамках оговорённого — включены; новая задача сверх брифа — новая цена, честно и заранее.</p></details>
-      <details><summary>Почему так дёшево?</summary><p>Обычный продакшн платит за камеру, студию, актёров и команду из пяти человек.
-      Я плачу за генерации нейросетей и своё время. <b>Вы платите за результат, а не за аренду площадки.</b></p></details>
-      <details><summary>Вы гарантируете просмотры?</summary><p>Нет — и не верьте тем, кто гарантирует. Что я гарантирую: <b>сроки 3–5 дней и работу по согласованному брифу</b> — правки в его рамках включены. Метод — тот, что принёс мне 17,8 млн просмотров: 10 моих роликов пробили 500 000.</p></details>
-      <details><summary>Почему на сайте нет отзывов?</summary><p>Потому что я их не придумываю. Заказы с сайта только запускаются —
-      первые отзывы встанут сюда со ссылками на реальные аккаунты. Пока судите по тому, что подделать нельзя:
-      <b>75 выпущенных роликов с живыми счётчиками просмотров</b>.</p></details>
-    </div>
-  </section>
-</div>
-<div class="final">
-  <img class="author-solo" src="ava.jpg" alt="Руслан">
-  <h2>Ваш бренд — в следующей <span style="color:var(--gold)">серии</span>?</h2>
-  <p>Пока конкуренты согласовывают смету на съёмки, ваш ролик уже набирает просмотры.</p>
-  <div class="cta-row" style="justify-content:center;margin-top:0">
-    <a class="btn btn-gold" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%BE%D0%BB%D0%B8%D0%BA%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D1%80%D0%B5%D0%BD%D0%B4%D0%B0.%20%C2%AB%D0%A0%D0%9E%D0%9B%D0%98%D0%9A%C2%BB">Брендам: написать «РОЛИК»</a>
-    <a class="btn btn-ghost" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%B0%D1%80%D0%BE%D0%BA%20%D0%BA%20%D0%B4%D0%B0%D1%82%D0%B5.%20%C2%AB%D0%A4%D0%9E%D0%A2%D0%9E%C2%BB%20%D0%B8%D0%BB%D0%B8%20%C2%AB%D0%9F%D0%95%D0%A1%D0%9D%D0%AF%C2%BB">Подарок к дате: «ФОТО» / «ПЕСНЯ»</a>
-  </div>
-</div>
 
-<a class="mcta" href="https://t.me/ruslan_ai_creator">Написать в Telegram</a>
-<footer>
-  <div class="wrap foot">
-    <span>© 2026 RUSLAN.AI.BLOG</span>
-    <div class="socials">
-      <a class="sic" href="https://t.me/ruslan_ai_creator" title="Telegram" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.4-4.6L18.2 6c.4-.3-.1-.5-.6-.2L7.3 12.3l-4.5-1.4c-1-.3-1-1 .2-1.4L20.6 3.2c.8-.3 1.5.2 1.3 1.4z"/></svg></a>
-      <a class="sic" href="https://instagram.com/ruslan.ai.blog" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 2.2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm6.4-3.9a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
-    </div>
-  </div>
-  <div class="wrap requisites">ИП Абдрахманов Руслан Леонидович · ИНН 382009236109 · ОГРНИП 322385000099295<br>
-  <a href="oferta.html">Публичная оферта</a> · <a href="privacy.html">Политика конфиденциальности</a></div>
-</footer>
+  
 
+  <section class="final-cta">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="m6.3 6.3 2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/></svg> Начнём с одного сообщения</span><h2>Нужна точная цена?</h2><p>Опишите задачу одним сообщением — я назову стоимость и срок до начала работы.</p>
+    <div><a class="button light" href="https://t.me/ruslan_ai_creator?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%82%D0%BE%D1%87%D0%BD%D1%83%D1%8E%20%D1%86%D0%B5%D0%BD%D1%83.%20%D0%9C%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A%20">Написать в Telegram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></a><a href="https://ig.me/m/ruslan.ai.blog">Instagram Direct <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+  </section>
+
+  <footer>
+    <a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg></span><span>RUSLAN<span>.AI</span></span></a>
+    <p>AI-проекты с идеей и характером</p>
+    <div><a href="https://t.me/ruslan_ai_creator">Telegram</a><a href="https://instagram.com/ruslan.ai.blog">Instagram</a><a href="oferta.html">Оферта</a><a href="privacy.html">Конфиденциальность</a></div>
+  </footer>
+</main>
 
 <script>
   (() => {
-    const art = document.getElementById('gpReveal');
-    if (!art) return;
-    const again = document.getElementById('gpAgain');
-    const reveal = () => {
-      if (art.classList.contains('done')) return;
-      art.classList.add('done', Math.random() < 0.5 ? 'girl' : 'boy');
-    };
-    art.addEventListener('click', reveal);
-    art.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reveal(); } });
-    again.addEventListener('click', e => {
-      e.stopPropagation();
-      art.classList.remove('done', 'girl', 'boy');
-    });
-  })();
-  (() => {
-    const tabs = document.querySelectorAll('.gp-tab');
-    if (!tabs.length) return;
-    tabs.forEach(tab => tab.addEventListener('click', () => {
-      tabs.forEach(other => {
-        const on = other === tab;
-        other.setAttribute('aria-selected', on ? 'true' : 'false');
-        document.getElementById(other.getAttribute('aria-controls')).classList.toggle('on', on);
-      });
-    }));
+    const m = document.getElementById('motion');
+    if (m && !matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(pointer: fine)').matches) {
+      let f = 0;
+      addEventListener('pointermove', e => {
+        cancelAnimationFrame(f);
+        f = requestAnimationFrame(() => {
+          m.style.setProperty('--cursor-x', e.clientX + 'px');
+          m.style.setProperty('--cursor-y', e.clientY + 'px');
+        });
+      }, {passive: true});
+    }
+    const b = document.getElementById('burger'), nav = document.getElementById('nav');
+    if (b && nav) b.addEventListener('click', () => nav.classList.toggle('open'));
   })();
 </script>
-
+</body>
 </html>
-<script>
-  if (matchMedia('(hover:hover) and (prefers-reduced-motion: no-preference)').matches) {
-    let raf; addEventListener('pointermove', e => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        document.documentElement.style.setProperty('--mx', e.clientX + 'px');
-        document.documentElement.style.setProperty('--my', e.clientY + 'px');
-      });
-    }, { passive: true });
-  }
-</script>
-<script>
-  (() => {
-    const m = document.getElementById('mnav');
-    const b = document.getElementById('mburger');
-    if (!m || !b) return;
-    b.onclick = () => m.classList.add('open');
-    m.querySelector('.mclose').onclick = () => m.classList.remove('open');
-    m.querySelectorAll('a').forEach(a => a.addEventListener('click', () => m.classList.remove('open')));
-  })();
-</script>
