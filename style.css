@@ -119,3 +119,73 @@ footer{border-top-color:#cbd1d7;color:#707a85}.kit-page,.single-kit{color:#12182
 .page-works .cards-grid{display:flex;overflow-x:auto;gap:16px;padding:8px 4px 30px;cursor:grab;scrollbar-width:none;overscroll-behavior-x:contain}.page-works .cards-grid::-webkit-scrollbar{display:none}.page-works .cards-grid.is-dragging{cursor:grabbing;user-select:none}.page-works .cards-grid .service-card{flex:0 0 min(390px,82vw);min-height:390px}
 @media(max-width:700px){.motion-trail{display:none}.motion-reveal{transform:translateY(24px)}.page-works .second-section,.page-price .second-section,.page-learn .second-section,.page-sites .sites-audience,.page-sites .sites-comparison,.page-sites .sites-ready{margin:100px 12px 0;padding:78px 18px;clip-path:polygon(0 0,calc(100% - 24px) 0,100% 24px,100% 100%,0 100%);box-shadow:none}.page-works .cards-grid{margin-right:-18px}}
 @media(prefers-reduced-motion:reduce){.motion-trail{display:none}.motion-reveal,.motion-reveal :is(.service-card,.detail-card,.audience-card,.site-price-grid>article,.ready-grid>article){opacity:1;transform:none;transition:none}}
+
+/* ═══ ТЁМНАЯ ТЕМА: фон не бьёт по глазам (решение владельца 30.08) ═══ */
+:root{
+  --ink:#e7edf5;--muted:#8d9aab;--paper:#0b0f16;--white:#121a25;--panel:#121a25;
+  --violet:#3d74ff;--violet-dark:#8aa8ff;--violet-soft:#121c2e;
+  --pink:#ff5c8a;--pink-soft:#1d1320;--blue:#3d74ff;--blue-soft:#0f1a2c;
+  --line:#222d3d;--metal:#8d98a5;--black:#070a10;
+}
+body{background:radial-gradient(circle at 70% -8%,rgba(61,116,255,.10),transparent 34%),linear-gradient(180deg,#0b0f16 0%,#080c12 60%,#0b0f16 100%);color:var(--ink)}
+
+/* живой фон */
+.motion-background{background:#080c12}
+.motion-background:before{background:radial-gradient(circle at 62% -10%,rgba(61,116,255,.14),transparent 36%),linear-gradient(180deg,rgba(8,12,18,.35),rgba(8,12,18,.72))}
+.motion-grid{opacity:.20;background-image:linear-gradient(rgba(120,155,225,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(120,155,225,.16) 1px,transparent 1px)}
+.motion-beam{background:conic-gradient(from 110deg,transparent 0 32%,rgba(61,116,255,.15) 38%,transparent 44% 73%,rgba(150,175,225,.07) 78%,transparent 84%)}
+.motion-ribbon{background:linear-gradient(90deg,transparent 4%,rgba(61,116,255,.05) 24%,rgba(110,150,255,.14) 49%,rgba(200,215,245,.10) 62%,transparent 88%)}
+.motion-orbit{border-color:rgba(61,116,255,.18)}.motion-orbit-two{border-color:rgba(160,180,210,.10)}
+.motion-cursor{background:radial-gradient(430px circle at var(--cursor-x),rgba(61,116,255,.10),transparent 68%)}
+.motion-noise{opacity:.035;mix-blend-mode:screen}
+.motion-trail{mix-blend-mode:screen}
+
+/* шапка, карточки, панели */
+.global-header{background:rgba(11,15,22,.82)}
+.header-button{background:rgba(18,26,37,.8);border-color:var(--line);color:var(--ink)}
+.header-button:hover{border-color:var(--violet);color:#fff}
+.global-header nav a{color:#93a1b4}
+.global-header nav a.active,.global-header nav a:hover{color:#8aa8ff}
+.brand{color:var(--ink)}.brand-mark{background:var(--violet)}
+.edge-rail,.hero-ghost{color:transparent}
+.hero-ghost{-webkit-text-stroke:1px rgba(140,170,225,.10)}
+.page-hero h1{color:#f2f6fb}
+.page-hero h1 em{color:#9db2d6}
+.page-hero-copy>p{color:#93a1b4;border-left-color:#243044}
+.facts{color:#7d8b9d}
+.kinetic-strip{background:rgba(10,15,22,.9);border-color:#1b2432}
+.kinetic-strip>div{color:#dbe4f0}
+.value-band{background:linear-gradient(110deg,rgba(16,23,33,.95),rgba(10,15,22,.85));border-color:#1e2836;box-shadow:none}
+.value-band p{color:#fff}.value-band>span{color:#5d6b7d;border-left-color:#26313f}.value-band b{color:#c3cdda}
+.section-head>span{color:#7f9cff}
+.section-head h2{color:#f2f6fb}
+.section-head p{color:#8d9aab}
+.service-card,.detail-card{background:rgba(18,26,37,.86);border-color:#222d3d;box-shadow:0 22px 60px rgba(0,0,0,.45)}
+.service-card:hover{background:rgba(22,31,45,.95);border-color:#3b5b9e;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.detail-card:hover{background:rgba(22,31,45,.95);border-color:#3b5b9e}
+.service-card h3,.detail-card h3,.service-card strong,.detail-card strong{color:#eef3f9}
+.service-card p,.detail-card p{color:#8d9aab}
+.card-index,.detail-number{color:#7f9cff}
+.tone-violet{background:linear-gradient(145deg,#2c5fe6,#17398f)!important}
+.tone-dark{background:#080c12!important;border-color:#1c2634!important}
+.tone-pink{background:linear-gradient(145deg,#2a1524,#1b1019)!important;border-color:#4a2739!important}
+.tone-pink h3,.tone-pink strong{color:#ffd3e0}
+.tone-blue{background:linear-gradient(145deg,#111d33,#0d1522)!important;border-color:#25406b!important}
+.portrait-break{background:rgba(18,26,37,.86);border-color:#222d3d;box-shadow:0 22px 60px rgba(0,0,0,.45)}
+.portrait-break h2{color:#f2f6fb}.portrait-break p{color:#8d9aab}
+.final-cta{border-color:#28457f;background:radial-gradient(circle at 12% 20%,rgba(61,116,255,.20),transparent 28%),radial-gradient(circle at 88% 80%,rgba(90,135,255,.12),transparent 26%),#0a1120}
+.final-cta h2{color:#fff}.final-cta>p{color:#93a1b4}
+.button.light{background:#fff;color:#0a0f18}
+.button.secondary{background:rgba(18,26,37,.7);border-color:#28323f;color:#d5dde7}
+.button.secondary:hover{border-color:var(--violet);color:#fff}
+.page-hero-media img{filter:saturate(.85) contrast(1.06) brightness(.82)}
+.media-badge{background:rgba(10,15,22,.82);border:1px solid rgba(255,255,255,.14);color:#dbe4f0}
+.hero-specs{background:rgba(10,15,22,.9);border-color:#22303f;color:#68788c}
+footer{border-color:#1b2432;color:#7d8b9d}
+/* подложки секций: затемняющая заливка вместо светлой */
+.page-works .second-section{background-image:linear-gradient(90deg,rgba(9,13,20,.93),rgba(9,13,20,.74)),url('underlay-3.webp')}
+.page-price .second-section{background-image:linear-gradient(90deg,rgba(9,13,20,.94),rgba(9,13,20,.72)),url('underlay-4.webp')}
+.page-learn .second-section{background-image:linear-gradient(90deg,rgba(9,13,20,.93),rgba(9,13,20,.7)),url('underlay-5.webp')}
+.page-sites .sites-audience{background-image:linear-gradient(90deg,rgba(9,13,20,.92),rgba(9,13,20,.74)),url('underlay-1.webp')}
+.page-sites .sites-comparison{background-image:linear-gradient(90deg,rgba(9,13,20,.93),rgba(9,13,20,.74)),url('underlay-2.webp')}
+.page-sites .sites-ready{background-image:linear-gradient(90deg,rgba(9,13,20,.92),rgba(9,13,20,.72)),url('underlay-6.webp')}
