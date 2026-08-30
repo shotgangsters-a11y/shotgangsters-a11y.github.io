@@ -189,3 +189,25 @@ footer{border-color:#1b2432;color:#7d8b9d}
 .page-sites .sites-audience{background-image:linear-gradient(90deg,rgba(9,13,20,.92),rgba(9,13,20,.74)),url('underlay-1.webp')}
 .page-sites .sites-comparison{background-image:linear-gradient(90deg,rgba(9,13,20,.93),rgba(9,13,20,.74)),url('underlay-2.webp')}
 .page-sites .sites-ready{background-image:linear-gradient(90deg,rgba(9,13,20,.92),rgba(9,13,20,.72)),url('underlay-6.webp')}
+
+/* ═══ полка настоящих работ ═══ */
+.reels{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.reel{position:relative;display:block;aspect-ratio:9/16;overflow:hidden;text-decoration:none;border:1px solid var(--line);
+  background:#0d131c;clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%);
+  transition:transform .3s cubic-bezier(.2,.72,.2,1),border-color .3s,box-shadow .3s}
+.reel:hover{transform:translateY(-6px);border-color:#3b5b9e;box-shadow:0 26px 70px rgba(0,0,0,.6)}
+.reel img,.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05) brightness(.86);transition:filter .3s,transform .6s}
+.reel video{opacity:0;transition:opacity .4s}
+.reel:hover video{opacity:1}
+.reel:hover img{transform:scale(1.03)}
+.reel-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,16,.1) 40%,rgba(6,10,16,.92))}
+.reel-views{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:7px;padding:6px 11px;
+  background:rgba(6,10,16,.78);border:1px solid rgba(255,255,255,.16);color:#e7edf5;font-size:11px;letter-spacing:.06em}
+.reel-views i{width:6px;height:6px;background:#ff5c8a;box-shadow:0 0 10px #ff5c8a}
+.reel-meta{position:absolute;left:16px;right:16px;bottom:16px;color:#fff}
+.reel-meta b{display:block;font-size:16px;font-weight:800;line-height:1.14;letter-spacing:-.02em;text-transform:uppercase}
+.reel-meta span{display:block;margin-top:6px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(231,237,245,.6)}
+.reels-note{margin-top:20px;color:#68788c;font-size:12px;letter-spacing:.04em}
+@media(max-width:1000px){.reels{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.reels{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.reel video{display:none}}
