@@ -256,7 +256,11 @@ body.gender .media-badge>span{background:linear-gradient(90deg,#8fb8ea,#ff8fb0)}
   .cards-grid,.detail-grid{grid-template-columns:1fr!important;gap:14px!important;margin-right:0!important}
   .cards-grid>*,.detail-grid>*{grid-column:1/-1!important;min-height:0!important}
   .service-card,.detail-card{padding:24px 22px}
-  .service-card h3,.detail-card h3{font-size:22px}
+  /* на десктопе номер и заголовок разведены по краям высокой плитки
+     (margin-top:70px). В одну колонку плитка низкая, и тот же отступ
+     читается как пустая полоса посреди карточки. */
+  .service-card h3,.detail-card h3{font-size:22px;margin-top:18px}
+  .service-card .card-index,.detail-card .detail-number{margin-bottom:0}
   .service-card strong,.detail-card strong{font-size:22px}
   .value-band{grid-template-columns:1fr!important;gap:18px;padding:26px 20px}
   .value-band>span{border-left:0;padding-left:0}
@@ -289,3 +293,30 @@ body.gender .media-badge>span{background:linear-gradient(90deg,#8fb8ea,#ff8fb0)}
 /* нейтрализуем базовое правило пака: карточки видны по умолчанию */
 .motion-reveal :is(.service-card,.detail-card,.audience-card,.site-price-grid>article,.ready-grid>article){opacity:1;transform:none}
 .motion-reveal.pending :is(.service-card,.detail-card,.audience-card,.site-price-grid>article,.ready-grid>article){opacity:0;transform:translateY(24px)}
+
+/* ═══ МОБИЛЬНОЕ МЕНЮ: класс open существовал, правила — нет ═══
+   Скрипт страниц делает nav.classList.toggle('open'), но в паке
+   открытому меню не отвечало ни одно правило: на телефоне шапка
+   сворачивалась в бургер, который НИЧЕГО не открывал. Ссылка из
+   Instagram ведёт на works.html — то есть человек попадал на сайт
+   и не мог уйти с этой страницы ни на цены, ни на гендер-пати. */
+@media (max-width:980px){
+  .global-header{position:sticky;top:0;z-index:60}
+  .global-header nav#nav.open{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;left:0;right:0;top:100%;
+    padding:6px 18px 14px;
+    background:#0a0e16;
+    border-bottom:1px solid rgba(255,255,255,.09);
+    box-shadow:0 26px 60px rgba(0,0,0,.5);
+  }
+  .global-header nav#nav.open a{
+    padding:15px 2px;font-size:15px;letter-spacing:.01em;
+    color:#e7edf5;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .global-header nav#nav.open a.active{color:#5f8cff}
+  .global-header nav#nav.open a:last-child{border-bottom:0}
+  .menu-button{width:44px;height:44px;display:grid;place-items:center}
+  .menu-button svg{width:26px;height:26px}
+}
