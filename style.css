@@ -246,3 +246,46 @@ body.gender .final-cta{border-color:#5a3a6e;background:
   radial-gradient(circle at 88% 80%,rgba(255,92,138,.22),transparent 30%),#120c1a}
 body.gender .button.primary{background:linear-gradient(135deg,#3d74ff,#c94f9c);box-shadow:0 15px 45px rgba(150,80,200,.28)}
 body.gender .media-badge>span{background:linear-gradient(90deg,#8fb8ea,#ff8fb0)}
+
+/* ═══ телефон: бенто-сетка обязана схлопываться в одну колонку ═══
+   Правила пака задают карточкам span 3–8 из 12 колонок с высокой
+   специфичностью (nth-child), и на 375 px карточка выходила 133 px
+   шириной — текст рвался по буквам. Здесь порог 860 px, чтобы
+   планшет тоже не ловил узкие колонки. */
+@media (max-width:860px){
+  .cards-grid,.detail-grid{grid-template-columns:1fr!important;gap:14px!important;margin-right:0!important}
+  .cards-grid>*,.detail-grid>*{grid-column:1/-1!important;min-height:0!important}
+  .service-card,.detail-card{padding:24px 22px}
+  .service-card h3,.detail-card h3{font-size:22px}
+  .service-card strong,.detail-card strong{font-size:22px}
+  .value-band{grid-template-columns:1fr!important;gap:18px;padding:26px 20px}
+  .value-band>span{border-left:0;padding-left:0}
+  .page-hero{padding-left:18px;padding-right:18px}
+  .hero-ghost{display:none}
+  .edge-rail{display:none}
+  .reels{grid-template-columns:1fr!important}
+  .portrait-break{grid-template-columns:1fr!important;gap:24px}
+  .portrait-break img{width:100%;height:auto;aspect-ratio:4/5}
+  .final-cta{padding:56px 20px}
+  .global-header{padding:0 4px}
+}
+@media (max-width:860px){
+  /* лента работ на телефоне листается пальцем, но карточка видна целиком */
+  .page-works .cards-grid{display:grid!important;overflow:visible!important;padding:0!important}
+  .page-works .cards-grid .service-card{flex:none!important;min-height:0!important}
+}
+
+/* ссылка на залитой кобальтом карточке была синей по синему */
+.tone-violet a,.tone-violet .card-index{color:#fff!important}
+.tone-violet .card-index svg{color:rgba(255,255,255,.7)}
+
+/* ═══ появление блоков: контент виден, даже если скрипт не отработал ═══
+   Было opacity:0 в CSS — во встроенном браузере Инстаграма, где
+   IntersectionObserver может не сработать, страница оставалась пустой. */
+.motion-reveal{opacity:1;transform:none}
+.motion-reveal.pending{opacity:0;transform:translateY(42px)}
+.motion-reveal.pending :is(.service-card,.detail-card){opacity:0;transform:translateY(24px)}
+.motion-reveal.is-visible,.motion-reveal.is-visible :is(.service-card,.detail-card){opacity:1;transform:none}
+/* нейтрализуем базовое правило пака: карточки видны по умолчанию */
+.motion-reveal :is(.service-card,.detail-card,.audience-card,.site-price-grid>article,.ready-grid>article){opacity:1;transform:none}
+.motion-reveal.pending :is(.service-card,.detail-card,.audience-card,.site-price-grid>article,.ready-grid>article){opacity:0;transform:translateY(24px)}
