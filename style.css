@@ -460,4 +460,31 @@ footer{border-color:rgba(150,165,255,.12)}
 /* подложки секций — в тон индиго */
 .page-works .second-section,.page-price .second-section,.page-learn .second-section,
 .page-sites .sites-audience,.page-sites .sites-comparison,.page-sites .sites-ready{
-  background-image:linear-gradient(90deg,rgba(8,10,22,.97),rgba(8,10,22,.88)),var(--underlay,none)}
+  background-image:linear-gradient(90deg,rgba(8,10,22,.88),rgba(8,10,22,.55)),var(--underlay,none)}
+/* фоны сгенерированы через kie (nano-banana-2) 05.09 в индиго-стиле —
+   затемнение мягче, чем у прежних светло-серых фото */
+.page-works .second-section{--underlay:url('underlay-3-v3.jpg')}
+.page-price .second-section{--underlay:url('underlay-4-v3.jpg')}
+.page-learn .second-section{--underlay:url('underlay-5-v3.jpg')}
+.page-sites .sites-audience{--underlay:url('underlay-1-v3.jpg')}
+.page-sites .sites-comparison{--underlay:url('underlay-2-v3.jpg')}
+.page-sites .sites-ready{--underlay:url('underlay-6-v3.jpg')}
+
+/* ═══ ЧИТАЕМОСТЬ 05.09 (владелец: «лишний текст убери, тусклое сделай
+   читабельным») ═══
+   Декоративные «55°45′N», «FRAME 001 · 2026» убраны из разметки — это
+   шум пака, не информация. Здесь — контраст мелких надписей: они были
+   на грани различимости на новом индиго-фоне. */
+.facts{color:#98a7b9}
+.value-band>span{color:#8a99ac}
+.value-band>span b{color:#e7edf5}
+.section-head p{color:#96a4b5}
+.service-card p,.detail-card p{color:#97a5b6}
+.reels-note{color:#8a99ac;font-size:13px}
+.media-caption small{color:#c9d4e3}
+.final-cta>p{color:rgba(255,255,255,.74)}
+.page-hero-copy>p{color:#9caebf}
+.card-tag{color:#9db2d6}
+.tone-violet .card-tag,.tone-blue .card-tag{color:rgba(255,255,255,.85)}
+.tone-pink .card-tag{color:#f0a8c4}
+footer p{color:#93a1b4}
