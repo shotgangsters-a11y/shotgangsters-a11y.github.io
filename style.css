@@ -397,3 +397,20 @@ body{background:
 .page-sites .sites-audience{--underlay:url('underlay-1.webp')}
 .page-sites .sites-comparison{--underlay:url('underlay-2.webp')}
 .page-sites .sites-ready{--underlay:url('underlay-6.webp')}
+
+/* ═══ ПРОДАЮЩИЕ БЛОКИ ОБУЧЕНИЯ И ЦЕН 05.09 ═══ */
+.check-list{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:11px}
+.check-list li{position:relative;padding-left:26px;color:#aab6c6;font-size:14px;line-height:1.55}
+.check-list li:before{content:"✓";position:absolute;left:0;top:0;color:#7f9cff;font-weight:800}
+.tone-violet .check-list li{color:rgba(255,255,255,.88)}
+.tone-violet .check-list li:before{color:#fff}
+.card-cta{margin-top:22px}
+.card-cta .button{min-height:48px}
+/* пятая карточка витрины главной: «сайт» и «обучение» делят второй ряд */
+@media(min-width:1101px){
+  .cards-4 .service-card:nth-child(4){grid-column:2/span 5;min-height:245px}
+  .cards-4 .service-card:nth-child(5){grid-column:span 5;min-height:245px}
+}
+/* правило «ссылки на кобальте белые !important» красило и кнопку —
+   белый текст на белой кнопке */
+.tone-violet .button.light{color:#0a0f18!important}
