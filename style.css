@@ -519,3 +519,14 @@ footer a{font-size:14px}
 .reel-meta span{font-size:12px}
 .reel-views{font-size:13px}
 .card-index span,.detail-number{font-size:13px}
+
+/* ═══ ЖИВОЙ ФОН ГЕНДЕР-ПАТИ 06.09 (владелец: «фон для женщин, чтобы
+   что-то двигалось») ═══
+   Сгенерирован kie: картинка nano-banana-2 → видео Grok Imagine
+   (сад с розово-голубым дымом, конфетти и гирляндами). Видео лежит
+   ПОД содержимым (main z-index:1), затемняется градиентом, звук
+   вырезан на перекодировании — фон обязан молчать. */
+body.gender .gender-live-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+body.gender .gender-live-bg video,body.gender .gender-live-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.05)}
+body.gender .gender-live-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,16,.5),rgba(10,8,16,.84))}
+@media(prefers-reduced-motion:reduce){body.gender .gender-live-bg video{display:none}}
