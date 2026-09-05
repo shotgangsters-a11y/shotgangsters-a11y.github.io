@@ -365,3 +365,35 @@ body.gender .media-badge>span{background:linear-gradient(90deg,#8fb8ea,#ff8fb0)}
 /* Подвал был на грани читаемости — туда смотрят за офертой. */
 footer{color:#93a1b4}
 footer a:hover{color:#e7edf5}
+
+/* ═══ МЯГКИЙ ФОН 05.09 (владелец: «фон должен быть приятнее для глаз») ═══
+   Утомляли три вещи: яркие синие пятна с видимой границей, контрастная
+   движущаяся сетка и зерно поверх всего. Пятна ослаблены вдвое и растянуты
+   (без видимого края), сетка и зерно едва заметны, база чуть теплее и
+   светлее — контраст с белым текстом меньше бьёт по глазам.
+   Гендер-пати не трогается: её сине-розовый фон специфичнее (body.gender). */
+body{background:
+  radial-gradient(120% 90% at 70% -10%,rgba(61,116,255,.05),transparent 60%),
+  linear-gradient(180deg,#0e1219 0%,#0b0e14 55%,#0d1118 100%)}
+.motion-background{background:#0b0e14}
+.motion-background:before{background:
+  radial-gradient(110% 80% at 62% -12%,rgba(61,116,255,.07),transparent 55%),
+  linear-gradient(180deg,rgba(10,13,19,.35),rgba(10,13,19,.72))}
+.motion-grid{opacity:.09}
+.motion-beam{background:conic-gradient(from 110deg,transparent 0 32%,rgba(61,116,255,.08) 38%,transparent 44% 73%,rgba(150,175,225,.04) 78%,transparent 84%)}
+.motion-ribbon{background:linear-gradient(90deg,transparent 4%,rgba(61,116,255,.03) 24%,rgba(110,150,255,.07) 49%,rgba(200,215,245,.05) 62%,transparent 88%)}
+.motion-orbit{border-color:rgba(61,116,255,.10)}
+.motion-orbit-two{border-color:rgba(160,180,210,.06)}
+.motion-cursor{background:radial-gradient(430px circle at var(--cursor-x) var(--cursor-y),rgba(61,116,255,.06),transparent 68%)}
+.motion-noise{opacity:.018}
+/* фотоподложки секций затемнены сильнее — светло-серые участки
+   (бетон, мониторы) спорили со спокойным фоном */
+.page-works .second-section,.page-price .second-section,.page-learn .second-section,
+.page-sites .sites-audience,.page-sites .sites-comparison,.page-sites .sites-ready{
+  background-image:linear-gradient(90deg,rgba(9,13,20,.96),rgba(9,13,20,.86)),var(--underlay,none)}
+.page-works .second-section{--underlay:url('underlay-3.webp')}
+.page-price .second-section{--underlay:url('underlay-4.webp')}
+.page-learn .second-section{--underlay:url('underlay-5.webp')}
+.page-sites .sites-audience{--underlay:url('underlay-1.webp')}
+.page-sites .sites-comparison{--underlay:url('underlay-2.webp')}
+.page-sites .sites-ready{--underlay:url('underlay-6.webp')}
