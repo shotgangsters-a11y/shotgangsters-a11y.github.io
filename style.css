@@ -1,6 +1,15 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "../vendor/shadcn-tailwind-4.13.0.css";
+/* Шрифты самохостятся (fonts/*.woff2): Google Fonts не грузился во
+   встроенном браузере Инстаграма. Пути — от корня, где лежит style.css:
+   fonts/fonts.css сюда не импортируется, потому что его url(fonts/…)
+   резолвились бы в fonts/fonts/…. */
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/Manrope-400-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/Manrope-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/Manrope-700-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/Manrope-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/Manrope-800-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/Manrope-800-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/CormorantGaramond-600i-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/CormorantGaramond-600i-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 
 :root{--ink:#1d1830;--muted:#746f7d;--paper:#fffaf6;--white:#fff;--violet:#735bc3;--violet-dark:#503b99;--violet-soft:#eee9ff;--pink:#eaa3ba;--pink-soft:#fff0f4;--blue:#8dbde2;--blue-soft:#eaf6ff;--line:#e6dfe6;--serif:Georgia,"Times New Roman",serif;--sans:Arial,Helvetica,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit}svg{width:1em;height:1em;stroke-width:1.8}h1,h2,h3,p{margin-top:0}
@@ -320,3 +329,39 @@ body.gender .media-badge>span{background:linear-gradient(90deg,#8fb8ea,#ff8fb0)}
   .menu-button{width:44px;height:44px;display:grid;place-items:center}
   .menu-button svg{width:26px;height:26px}
 }
+
+/* ═══ ПРАВКИ ОФОРМЛЕНИЯ 05.09 ═══ */
+
+/* Шрифты: пак пришёл с reference-кодом под Tailwind, и style.css остался
+   на Arial. Веса 900 у Arial нет — браузер дорисовывал жирность сам, и
+   заголовки выглядели растянутым системным шрифтом. Manrope хостится
+   локально (максимальный вес 800, поэтому 900 снижен до честного 800). */
+:root{--sans:'Manrope',Arial,Helvetica,sans-serif;--serif:'Cormorant Garamond',Georgia,serif}
+.page-hero h1,.section-head h2,.final-cta h2,.kit-intro h1,.single-kit>h1{font-weight:800}
+
+/* Текст на залитых цветом карточках был muted-серым по синему —
+   подписи «Многостраничный сайт», «Личное обучение», «История семьи»
+   не читались. Ссылку чинили раньше, абзацы — здесь. */
+.tone-violet p{color:rgba(255,255,255,.85)}
+.tone-blue p{color:#b7c6e0}
+.tone-pink p{color:#e9c6d4}
+.tone-dark p{color:#93a1b4}
+.tone-blue a,.tone-pink a,.tone-dark a{color:#9db9ff}
+
+/* Вторая ссылка финального CTA терялась рядом с белой кнопкой —
+   теперь это видимая контурная кнопка. */
+.final-cta>div>a:last-child{color:#fff;border:1px solid rgba(255,255,255,.3);padding:15px 21px;border-radius:4px;text-transform:uppercase;letter-spacing:.08em;font-size:10px;transition:border-color .3s}
+.final-cta>div>a:last-child:hover{border-color:#fff}
+
+/* Пустота внутри бенто-карточек: номер и заголовок были разведены
+   на 70px, и три тёмных прямоугольника подряд читались как
+   недогруженная страница. На телефоне уже ужато до 18px. */
+@media(min-width:861px){
+  .detail-card h3{margin-top:34px}
+  .service-card{min-height:330px}
+  .detail-card{min-height:210px}
+}
+
+/* Подвал был на грани читаемости — туда смотрят за офертой. */
+footer{color:#93a1b4}
+footer a:hover{color:#e7edf5}
