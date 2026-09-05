@@ -414,3 +414,50 @@ body{background:
 /* правило «ссылки на кобальте белые !important» красило и кнопку —
    белый текст на белой кнопке */
 .tone-violet .button.light{color:#0a0f18!important}
+
+/* ═══ ОФОРМЛЕНИЕ ПО РЕФЕРЕНСУ KIE.AI 05.09 (владелец прислал ссылку) ═══
+   Взято у kie: глубокий сине-фиолетовый фон со свечением сверху вместо
+   плоского графита, стеклянные карточки с большим скруглением, кнопки-
+   пилюли. Гендер-пати сохраняет свой сине-розовый фон (body.gender
+   специфичнее). */
+
+/* фон: индиго-градиент с мягким свечением, как «Прозрачные цены» у kie */
+body{background:
+  radial-gradient(90% 55% at 50% -18%,rgba(88,101,242,.22),transparent 62%),
+  radial-gradient(60% 45% at 88% 6%,rgba(56,140,248,.08),transparent 55%),
+  linear-gradient(180deg,#0b0e20 0%,#080a15 48%,#0a0c1b 100%)}
+.motion-background{background:#080a15}
+.motion-background:before{background:
+  radial-gradient(80% 60% at 50% -15%,rgba(88,101,242,.10),transparent 58%),
+  linear-gradient(180deg,rgba(9,11,24,.35),rgba(9,11,24,.72))}
+.motion-grid{opacity:.08;background-image:linear-gradient(rgba(140,150,235,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(140,150,235,.14) 1px,transparent 1px)}
+.motion-orbit{border-color:rgba(120,130,250,.10)}
+
+/* карточки-стекло со скруглением */
+.service-card,.detail-card{border-radius:18px;background:rgba(255,255,255,.035);border-color:rgba(150,165,255,.14)}
+.service-card:hover,.detail-card:hover{background:rgba(255,255,255,.055);border-color:rgba(160,175,255,.32);box-shadow:0 26px 70px rgba(5,8,20,.55)}
+.tone-dark{background:rgba(6,8,18,.6)!important;border-color:rgba(150,165,255,.12)!important}
+.tone-blue{background:linear-gradient(150deg,rgba(37,58,120,.55),rgba(15,22,48,.6))!important;border-color:rgba(110,140,255,.28)!important}
+.tone-violet{border-radius:18px}
+.page-hero-media{border-radius:22px}
+.value-band{border-radius:18px;background:rgba(255,255,255,.03);border:1px solid rgba(150,165,255,.12)}
+.portrait-break{border-radius:22px;background:rgba(255,255,255,.035);border-color:rgba(150,165,255,.14)}
+.final-cta{border-radius:26px;border-color:rgba(130,145,255,.28);background:
+  radial-gradient(70% 90% at 18% 15%,rgba(88,101,242,.26),transparent 55%),
+  radial-gradient(60% 80% at 85% 85%,rgba(56,140,248,.14),transparent 55%),#0b0e20}
+.kit-intro,.sw,.type-grid>div,.icon-grid>div{border-radius:16px}
+
+/* кнопки-пилюли, как у kie */
+.button,.header-button{border-radius:999px}
+.final-cta>div>a:last-child{border-radius:999px}
+.card-cta .button{border-radius:999px}
+
+/* полка работ и превью: скругление вместо срезанного угла */
+.reel{clip-path:none;border-radius:16px;border-color:rgba(150,165,255,.14)}
+.media-badge,.hero-specs{border-radius:999px}
+.global-header{background:rgba(9,11,22,.72);backdrop-filter:blur(14px)}
+footer{border-color:rgba(150,165,255,.12)}
+/* подложки секций — в тон индиго */
+.page-works .second-section,.page-price .second-section,.page-learn .second-section,
+.page-sites .sites-audience,.page-sites .sites-comparison,.page-sites .sites-ready{
+  background-image:linear-gradient(90deg,rgba(8,10,22,.97),rgba(8,10,22,.88)),var(--underlay,none)}
