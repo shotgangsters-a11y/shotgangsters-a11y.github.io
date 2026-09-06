@@ -546,3 +546,12 @@ body.gender .gender-live-bg:after{background:linear-gradient(180deg,rgba(10,8,16
 .live-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(1.02) blur(2px);transform:scale(1.05)}
 .live-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,20,.5),rgba(8,10,20,.84))}
 @media(prefers-reduced-motion:reduce){.live-bg video{display:none}}
+
+/* ═══ ЗАГОЛОВОК НЕ ЛЕЗЕТ НА ФОТО 06.09 ═══
+   Пак намеренно кладёт h1 поверх рамки героя, но на «Обо мне» строка
+   «AI-креатор и режиссёр историй» заходила на лицо, а на «Сайтах» —
+   на скриншот. Тексту этих страниц — своя колонка без наезда. */
+@media(min-width:821px){
+  .page-about .page-hero h1,.page-sites .page-hero h1{max-width:560px;font-size:clamp(52px,4.6vw,78px)}
+  .page-about .page-hero-copy,.page-sites .page-hero-copy{max-width:600px}
+}
