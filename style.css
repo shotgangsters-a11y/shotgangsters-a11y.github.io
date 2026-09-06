@@ -536,3 +536,13 @@ body.gender .gender-live-bg:after{content:"";position:absolute;inset:0;backgroun
 body.gender .gender-live-bg video,body.gender .gender-live-bg img{filter:brightness(.62) saturate(1.05) blur(2px);transform:scale(1.05)}
 body.gender .gender-live-bg:after{background:linear-gradient(180deg,rgba(10,8,16,.42),rgba(10,8,16,.78))}
 .media-sites img{object-position:top}
+
+/* ═══ ЖИВЫЕ ПОДЛОЖКИ ВСЕГО САЙТА 06.09 (владелец: «чтоб не так сухо») ═══
+   Тот же приём, что на гендер-пати: 6-секундное зацикленное видео из
+   собственного индиго-кадра страницы, под контентом (main z-index:1),
+   притушено и слегка размыто. Постер = тот же кадр: без автоплея и при
+   reduced-motion остаётся статика. */
+.live-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.live-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(1.02) blur(2px);transform:scale(1.05)}
+.live-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,20,.5),rgba(8,10,20,.84))}
+@media(prefers-reduced-motion:reduce){.live-bg video{display:none}}
