@@ -530,3 +530,9 @@ body.gender .gender-live-bg{position:fixed;inset:0;z-index:0;overflow:hidden;poi
 body.gender .gender-live-bg video,body.gender .gender-live-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.05)}
 body.gender .gender-live-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,16,.5),rgba(10,8,16,.84))}
 @media(prefers-reduced-motion:reduce){body.gender .gender-live-bg video{display:none}}
+/* фон гендер-пати был пёстрым и лез вперёд контента: сильнее затемнение,
+   лёгкий блюр (scale прячет размытые края); скриншот в герое «Сайтов»
+   пересобран целым экраном — прежний кроп обрезал буквы на середине */
+body.gender .gender-live-bg video,body.gender .gender-live-bg img{filter:brightness(.42) saturate(.95) blur(3px);transform:scale(1.06)}
+body.gender .gender-live-bg:after{background:linear-gradient(180deg,rgba(10,8,16,.68),rgba(10,8,16,.9))}
+.media-sites img{object-position:top}
