@@ -533,6 +533,6 @@ body.gender .gender-live-bg:after{content:"";position:absolute;inset:0;backgroun
 /* фон гендер-пати был пёстрым и лез вперёд контента: сильнее затемнение,
    лёгкий блюр (scale прячет размытые края); скриншот в герое «Сайтов»
    пересобран целым экраном — прежний кроп обрезал буквы на середине */
-body.gender .gender-live-bg video,body.gender .gender-live-bg img{filter:brightness(.42) saturate(.95) blur(3px);transform:scale(1.06)}
-body.gender .gender-live-bg:after{background:linear-gradient(180deg,rgba(10,8,16,.68),rgba(10,8,16,.9))}
+body.gender .gender-live-bg video,body.gender .gender-live-bg img{filter:brightness(.62) saturate(1.05) blur(2px);transform:scale(1.05)}
+body.gender .gender-live-bg:after{background:linear-gradient(180deg,rgba(10,8,16,.42),rgba(10,8,16,.78))}
 .media-sites img{object-position:top}
